@@ -1,0 +1,60 @@
+Controller
+------------
+1. 	Receive file, newFileName, fileType
+	a. How do we process uploaded file in Grails?
+		
+2.	Process file - use processedFileContents = FileProcessor.processFile(file,fileType)
+
+3.	Scrub file - use scrubbedFileContents = Scrubber.scrub(processedFileContents,fileType)
+
+4.	Save file - use FileProcessor.saveReadyFile(scrubbedFileContents, newFileName)	
+
+5.	Get list of ready files' URLs, use String[] urls = FileProcessor.getReadyFiles().	
+	
+6.	Return the urls to the main view
+	a. How does the view/controller interaction work in Grails?
+	b. How do we spin Controller steps 2 - 4 as a separate thread? Suggestion: Grails BackgroundThread Plugin
+	
+	
+FileProcessor
+-------------
+methods:
+1.	getReadyFilesUrls()
+	a) Get list of ready files from the ready-files directory
+	b) convert their names to URLs to be served on the front-end
+	c) Return the URLs
+	
+	questions:
+	a. How does Grails serve text files from dirs?
+	
+2.	saveReadyFile(FileContents, name)
+	a) Create new file with the passed name in the ready-files directory
+	b) Write to the new file the FileContents lines
+	
+	questions:
+	a. How does Grails do File IO?	
+	b. How do we monitor the processing progress and update the front end progress-bar with the progress?
+	
+3.	processFile(FileContents,fileType)
+	a) 	If fileType = CSV
+	b) 		remove commas from FileContents strings
+	c)	Else
+	d)		do nothing
+	e)	Return the String array representing the processed file contents
+	
+
+Scrubber
+--------
+methods:
+1.	scrub(FileContents, fileType)
+	a)	Get scrub list: Array<ScrubItem> scrubList = get scrub list from DB
+	b)	If fileType = md5
+	c)		subtract scrubList from FileContents based on md5 field of scrubList
+	d)	Else
+	e)		subtract scrubList from FileContents based on email field of scrubList
+	f)	Return the resulting Contents(Array<String>)
+	
+	questions:
+	a. Does Groovy/Grails provide a mechanism for easy subtraction of sets? If not, use beanutils
+	
+
