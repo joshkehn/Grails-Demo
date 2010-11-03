@@ -27,6 +27,7 @@ methods:
 	questions:
 	a. How does Grails serve text files from dirs?
 		A: GSP tag <g:createLinkTo>
+			<a class="home" href="${createLinkTo(dir:'', file:'')}">Home</a>
 	
 2.	saveReadyFile(FileContents, name)
 	a) Create new file with the passed name in the ready-files directory
