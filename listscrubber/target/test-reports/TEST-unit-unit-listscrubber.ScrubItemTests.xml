@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite errors="0" failures="0" hostname="Emprivo.local" name="listscrubber.ScrubItemTests" tests="1" time="0.631" timestamp="2010-11-04T21:44:43">
+  <properties />
+  <testcase classname="listscrubber.ScrubItemTests" name="testSomething" time="0.627" />
+  <system-out><![CDATA[--Output from testSomething--
+]]></system-out>
+  <system-err><![CDATA[--Output from testSomething--
+]]></system-err>
+</testsuite>

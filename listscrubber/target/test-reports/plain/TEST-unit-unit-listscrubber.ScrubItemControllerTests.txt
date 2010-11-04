@@ -1,0 +1,14 @@
+Testsuite: listscrubber.ScrubItemControllerTests
+Tests run: 1, Failures: 0, Errors: 1, Time elapsed: 0.179 sec
+------------- Standard Output ---------------
+--Output from initializationError--
+------------- ---------------- ---------------
+------------- Standard Error -----------------
+--Output from initializationError--
+------------- ---------------- ---------------
+
+Testcase: initializationError took 0.147 sec
+	Caused an ERROR
+No runnable methods
+java.lang.Exception: No runnable methods
+

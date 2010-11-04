@@ -1,5 +1,6 @@
 package listscrubber;
 
+import org.apache.commons.collections.CollectionUtils;
 
 class ScrubItemController {
     
@@ -18,20 +19,20 @@ class ScrubItemController {
             if(!dirtyFile.empty)
             {
                 contents = dirtyFile.inputStream.text;
+				
+				println "contents: " + contents;				
                 
                 List<String> processedFile = FileHandler.processFile(contents, fileType);
+				println "processedFile: " + processedFile;
+				
 				List<String> scrubbedFile = Scrubber.scrub(processedFile, fileType);
+				println "scrubbedFile: " + scrubbedFile;
 				
-				String result = "";
-				
-				for(String s : scrubbedFile) {
-					result += s;
-				}
+				def result = scrubbedFile.join("\n")
+				println "result: " + result;
                 
                 FileHandler.saveReadyFile(result, fileName);
             }
-                        
-/*            println "Contents: " + contents*/
             println "File Type: " + fileType
             println "File Name: " + fileName
             successes.add('File upload successful.');              
@@ -65,10 +66,9 @@ class FileHandler
             /**
             * Process
             */
-/*            clean = clean.replaceAll(Pattern.compile('/,/'), "");*/
             clean = clean.replace(',', '');
         }
-        clean
+        clean.split();
     }
 	
     static getReadyFilesUrls()
@@ -125,11 +125,11 @@ class Scrubber {
 	a. Does Groovy/Grails provide a mechanism for easy subtraction of sets? If not, use beanutils
 	*/
 	
-	List<String> scrub(List<String> processedFile, String fileType) {
-		List<SupressedEmail> scrubList = SupressedEmail.list();
-		List<String> scrubEmail = new ArrayList<String>();
-		List<String> scrubMd5 = new ArrayList<String>();
-		List<String> result = null;
+	static scrub(ArrayList processedFile, String fileType) {
+		def scrubList = SupressedEmail.list();
+		def scrubEmail = new ArrayList<String>();
+		def scrubMd5 = new ArrayList<String>();
+		def result = null;
 		
 		for(SupressedEmail s : scrubList) {
 			scrubEmail.add(s.getEmail());
