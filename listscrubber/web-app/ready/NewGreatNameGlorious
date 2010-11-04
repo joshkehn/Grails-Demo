@@ -1,0 +1,4 @@
+1. In case of deferred setup payment, if you change a contract and save, 
+even if you didn't change the initial payment plan, the setup payment will be reset to the [current day] + number of months deferred.
+Proposed solution: inste4ad of having a number of months deferred,  have another date field to ndicate what the payment month is.
+2. After a new whitelisting is saved, it is impossible to extend the tiers - UI Issues (Josh)

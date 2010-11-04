@@ -19,11 +19,16 @@ class ScrubItemController {
             {
                 contents = dirtyFile.inputStream.text;
                 
-                /**
-                * Processing code goes here
-                */
+                List<String> processedFile = FileHandler.processFile(contents, fileType);
+				List<String> scrubbedFile = Scrubber.scrub(processedFile, fileType);
+				
+				String result = "";
+				
+				for(String s : scrubbedFile) {
+					result += s;
+				}
                 
-                FileHandler.saveReadyFile(contents, fileName);
+                FileHandler.saveReadyFile(result, fileName);
             }
                         
 /*            println "Contents: " + contents*/
