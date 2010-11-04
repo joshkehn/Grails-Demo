@@ -50,3 +50,34 @@ class FileHandler
         dirtyFile(blank: false)
     }
 }
+
+class Scrubber {
+	/*
+	scrub(FileContents, fileType)
+	a)	Get scrub list: Array<ScrubItem> scrubList = get scrub list from DB
+	b)	If fileType = md5
+	c)		subtract scrubList from FileContents based on md5 field of scrubList
+	d)	Else
+	e)		subtract scrubList from FileContents based on email field of scrubList
+	f)	Return the resulting Contents(Array<String>)
+	
+	Note: the scrub method assumes that the scrub list is small enough to keep in memory
+	Once our list exceeds that point, we can modify the code to 
+	incrementally retrieve pieces of the collection and subtract 
+	them from the "dirty" list until ("dirty" list is empty OR no more result sets are there to be retrieved)
+	
+	questions:
+	a. Does Groovy/Grails provide a mechanism for easy subtraction of sets? If not, use beanutils
+	*/
+	
+	List<String> scrub(List<String> processedFile, fileType) {
+		List<SupressedEmail> scrubList = SupressedEmail.list();
+		List<String> scrubEmail = new ArrayList<String>();
+		List<String> scrubMd5 = new ArrayList<String>();
+		
+		for(SupressedEmail s : scrubList) {
+			scrubEmail.add(s.getEmail());
+			scrubMd5.add(s.getMd5());
+		}
+	}
+}
