@@ -168,9 +168,9 @@
 			        <tbody>
         				<g:each in="${urlList}" var="url">
         				    <tr>
-        				        <td>${url.label}</td>
+        				        <td>${url.label.decodeURL()}</td>
         				        <td>${url.timestamp}</td>
-        				        <td><a href="#">Download</a></td>
+        				        <td><a href="${createLinkTo(dir: 'ready', file: url.label.decodeURL())}">Download</a></td>
         				    </tr>
         				</g:each>
     			    </tbody>

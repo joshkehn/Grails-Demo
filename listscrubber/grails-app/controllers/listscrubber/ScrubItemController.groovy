@@ -1,30 +1,36 @@
 package listscrubber;
 
 class ScrubItemController {
-
+    
     def index = {
         def errors = [];
         def successes = [];
+        
         if(params.fileType && !request.getFile("dirtyFile").empty && params.fileName)
         {   
             def valid = true;
             def dirtyFile = request.getFile("dirtyFile");
             def contents;
+            def fileType = params.fileType;
+            def fileName = params.fileName;
             
             if(!dirtyFile.empty)
             {
                 contents = dirtyFile.inputStream.text;
+                
+                /**
+                * Processing code goes here
+                */
+                
+                FileHandler.saveReadyFile(contents, fileName);
             }
-            
-            def fileType = params.fileType;
-            def fileName = params.fileName;
-            
-            println "Contents: " + contents
+                        
+/*            println "Contents: " + contents*/
             println "File Type: " + fileType
             println "File Name: " + fileName
             successes.add('File upload successful.');              
         }
-        else if(params.fileType || !request.getFile("dirtyFile").empty || params.fileName)
+        else if(params.fileType || params.dirtyFile || params.fileName)
         {
             errors.add('One or more options were not filled out. Every field is required.');
         }
@@ -44,24 +50,43 @@ class FileHandler
         fileName(blank: false)
         dirtyFile(blank: false)
     }
-    
     static getReadyFilesUrls()
     {
         def urlList = [];
-        ScrubbedFile f = new ScrubbedFile();
-        f.timestamp = "now";
-        f.label = "Hello";
-        urlList.add(f);
-        f.timestamp = "yesterday";
-        f.label = "World";
-        urlList.add(f);
-        urlList;
+        def f = new File('web-app/ready');
+        if(f.exists())
+        {
+            f.eachFile() { file -> 
+                if(!file.isDirectory())
+                {
+                    def s = new ScrubbedFile();
+                    s.label = file.name;
+                    s.timestamp = "00:00";
+                    urlList.add(s);
+                }
+                else
+                {
+                    println file.name + " is directory";
+                }
+            }
+        }
+        else
+        {
+            println "File doesn't exist";
+        }
+        urlList
+    }
+    
+    static saveReadyFile(String contents, String name)
+    {
+        println "Saving to " + name
+        new File('web-app/ready/' + name).write(contents);        
     }
     
 }
 
 class ScrubbedFile
 {
-    String timestamp;
-    String label;
+    def timestamp;
+    def label;
 }
