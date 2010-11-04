@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites>
+  <testsuite errors="1" failures="0" hostname="Emprivo.local" id="0" name="ScrubItemControllerTests" package="listscrubber" tests="1" time="0.074" timestamp="2010-11-04T21:42:03">
+      <properties />
+
+      <testcase classname="listscrubber.ScrubItemControllerTests" name="initializationError" time="0.028">
+          <error message="No runnable methods" type="java.lang.Exception">java.lang.Exception: No runnable methods
+</error>
+
+      </testcase>
+
+      <system-out><![CDATA[--Output from initializationError--
+]]></system-out>
+
+      <system-err><![CDATA[--Output from initializationError--
+]]></system-err>
+
+  </testsuite>
+  <testsuite errors="0" failures="0" hostname="Emprivo.local" id="1" name="ScrubItemTests" package="listscrubber" tests="1" time="0.154" timestamp="2010-11-04T21:42:03">
+      <properties />
+
+      <testcase classname="listscrubber.ScrubItemTests" name="testSomething" time="0.152" />
+
+      <system-out><![CDATA[--Output from testSomething--
+]]></system-out>
+
+      <system-err><![CDATA[--Output from testSomething--
+]]></system-err>
+
+  </testsuite>
+</testsuites>

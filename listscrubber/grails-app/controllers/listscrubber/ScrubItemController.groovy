@@ -24,8 +24,6 @@ class ScrubItemController {
                 
                 FileHandler.saveReadyFile(contents, fileName);
             }
-                        
-/*            println "Contents: " + contents*/
             println "File Type: " + fileType
             println "File Name: " + fileName
             successes.add('File upload successful.');              
@@ -58,10 +56,9 @@ class FileHandler
             /**
             * Process
             */
-/*            clean = clean.replaceAll(Pattern.compile('/,/'), "");*/
             clean = clean.replace(',', '');
         }
-        clean
+        clean.split();
     }
     static getReadyFilesUrls()
     {
