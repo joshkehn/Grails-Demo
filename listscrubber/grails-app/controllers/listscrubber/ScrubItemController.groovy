@@ -1,41 +1,52 @@
 package listscrubber;
 
+<<<<<<< HEAD
  class ScrubItemController {
 
+=======
+class ScrubItemController {
+    
+>>>>>>> b3bac845194abe6f02f1af0b7ddda9dcbbf33ccb
     def index = {
+        def errors = [];
+        def successes = [];
         
-        if(params.fileType && params.dirtyList && params.fileName)
-        {
+        if(params.fileType && !request.getFile("dirtyFile").empty && params.fileName)
+        {   
             def valid = true;
+<<<<<<< HEAD
             def dirtyFile = request.getFile("dirtylist");
             def contents = dirtyFile.inputStream.text;
+=======
+            def dirtyFile = request.getFile("dirtyFile");
+            def contents;
+>>>>>>> b3bac845194abe6f02f1af0b7ddda9dcbbf33ccb
             def fileType = params.fileType;
             def fileName = params.fileName;
             
-            println "Contents: " + contents
+            if(!dirtyFile.empty)
+            {
+                contents = dirtyFile.inputStream.text;
+                
+                /**
+                * Processing code goes here
+                */
+                
+                FileHandler.saveReadyFile(contents, fileName);
+            }
+                        
+/*            println "Contents: " + contents*/
             println "File Type: " + fileType
             println "File Name: " + fileName
-            [successes:['File upload successful.']]                
+            successes.add('File upload successful.');              
         }
-        else if(params.fileType || params.dirtyList || params.fileName)
+        else if(params.fileType || params.dirtyFile || params.fileName)
         {
-            [errors:['One or more options were not filled out. Every field is required.']];
+            errors.add('One or more options were not filled out. Every field is required.');
         }
+        
+        [urlList: FileHandler.getReadyFilesUrls(), errors: errors, successes: successes]
     }
-    
-/*    def scrubfile = {
-        FileHandler cmd ->
-            if(cmd.hasErrors())
-            {
-                redirect(action:'index', errors:['All fields are required.']);
-            }
-            else
-            {
-/*                [successes:['File uploaded successfully.']]
-                redirect(action:'index', successes:['File uploaded successfully.']);
-            }
-
-    }*/
 }
 
 class FileHandler
@@ -48,6 +59,39 @@ class FileHandler
         fileType(blank: false)
         fileName(blank: false)
         dirtyFile(blank: false)
+    }
+	
+	static getReadyFilesUrls()
+    {
+        def urlList = [];
+        def f = new File('web-app/ready');
+        if(f.exists())
+        {
+            f.eachFile() { file -> 
+                if(!file.isDirectory())
+                {
+                    def s = new ScrubbedFile();
+                    s.label = file.name;
+                    s.timestamp = "00:00";
+                    urlList.add(s);
+                }
+                else
+                {
+                    println file.name + " is directory";
+                }
+            }
+        }
+        else
+        {
+            println "File doesn't exist";
+        }
+        urlList
+    }
+    
+    static saveReadyFile(String contents, String name)
+    {
+        println "Saving to " + name
+        new File('web-app/ready/' + name).write(contents);        
     }
 }
 
@@ -80,4 +124,10 @@ class Scrubber {
 			scrubMd5.add(s.getMd5());
 		}
 	}
+}
+
+class ScrubbedFile
+{
+    def timestamp;
+    def label;
 }
