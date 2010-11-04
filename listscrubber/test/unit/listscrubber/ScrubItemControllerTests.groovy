@@ -2,7 +2,7 @@ package listscrubber
 
 import grails.test.*
 
-class ScrubItemControllerTests extends GroovyTestCase {
+class ScrubItemControllerTests extends ControllerUnitTestCase {
     protected void setUp() {
         super.setUp()
     }
@@ -11,25 +11,25 @@ class ScrubItemControllerTests extends GroovyTestCase {
         super.tearDown()
     }
 
-    protected void csvProcessingSpec()
+    void testCSVProcessing()
     {
         println "Testing csv file processing";
-        String nocomma = FileHandler.processFile("comma,", "csv");
+        def nocomma = FileHandler.processFile("comma,", "csv");
         
         assertEquals "comma", nocomma[0];
     }
     
-    protected void md5ProcessingSpec()
+    void testMD5Processing()
     {
         println "Testing md5 file processing";
-        String comma = FileHandler.processFile("comma,", "md5");
+        def comma = FileHandler.processFile("comma,", "md5");
         assertEquals "comma,", comma[0];
     }
 
-    protected void plainTextProcessingSpec()
+    void testPlainTextProcessing()
     {
         println "Testing plain text file processing";
-        String comma = FileHandler.processFile("comma,", "md5");
+        def comma = FileHandler.processFile("comma,", "md5");
         assertEquals "comma,", comma[0];
     }
 }

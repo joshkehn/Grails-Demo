@@ -1,6 +1,4 @@
 --Output from testCsvProcessing--
-Testing csv file processing
 --Output from testMD5Processing--
-Testing md5 file processing
 --Output from testPlainTextProcessing--
-Testing plain text file processing
+

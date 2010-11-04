@@ -1,25 +1,32 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <testsuites>
-  <testsuite errors="1" failures="0" hostname="Emprivo.local" id="0" name="ScrubItemControllerTests" package="listscrubber" tests="1" time="0.074" timestamp="2010-11-04T21:42:03">
+  <testsuite errors="0" failures="0" hostname="Emprivo.local" id="0" name="ScrubItemControllerTests" package="listscrubber" tests="3" time="0.089" timestamp="2010-11-04T21:51:38">
       <properties />
 
-      <testcase classname="listscrubber.ScrubItemControllerTests" name="initializationError" time="0.028">
-          <error message="No runnable methods" type="java.lang.Exception">java.lang.Exception: No runnable methods
-</error>
+      <testcase classname="listscrubber.ScrubItemControllerTests" name="testCsvProcessing" time="0.066" />
 
-      </testcase>
+      <testcase classname="listscrubber.ScrubItemControllerTests" name="testMD5Processing" time="0.011" />
 
-      <system-out><![CDATA[--Output from initializationError--
+      <testcase classname="listscrubber.ScrubItemControllerTests" name="testPlainTextProcessing" time="0.0070" />
+
+      <system-out><![CDATA[--Output from testCsvProcessing--
+Testing csv file processing
+--Output from testMD5Processing--
+Testing md5 file processing
+--Output from testPlainTextProcessing--
+Testing plain text file processing
 ]]></system-out>
 
-      <system-err><![CDATA[--Output from initializationError--
+      <system-err><![CDATA[--Output from testCsvProcessing--
+--Output from testMD5Processing--
+--Output from testPlainTextProcessing--
 ]]></system-err>
 
   </testsuite>
-  <testsuite errors="0" failures="0" hostname="Emprivo.local" id="1" name="ScrubItemTests" package="listscrubber" tests="1" time="0.154" timestamp="2010-11-04T21:42:03">
+  <testsuite errors="0" failures="0" hostname="Emprivo.local" id="1" name="ScrubItemTests" package="listscrubber" tests="1" time="0.0030" timestamp="2010-11-04T21:51:38">
       <properties />
 
-      <testcase classname="listscrubber.ScrubItemTests" name="testSomething" time="0.152" />
+      <testcase classname="listscrubber.ScrubItemTests" name="testSomething" time="0.0020" />
 
       <system-out><![CDATA[--Output from testSomething--
 ]]></system-out>
