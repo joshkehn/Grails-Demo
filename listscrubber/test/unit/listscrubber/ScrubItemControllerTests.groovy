@@ -13,23 +13,46 @@ class ScrubItemControllerTests extends ControllerUnitTestCase {
 
     void testCSVProcessing()
     {
-        println "Testing csv file processing";
-        def nocomma = FileHandler.processFile("comma,", "csv");
-        
+        def nocomma = FileHandler.processFile("comma,", "csv");   
         assertEquals "comma", nocomma[0];
     }
     
     void testMD5Processing()
     {
-        println "Testing md5 file processing";
         def comma = FileHandler.processFile("comma,", "md5");
         assertEquals "comma,", comma[0];
     }
 
     void testPlainTextProcessing()
     {
-        println "Testing plain text file processing";
         def comma = FileHandler.processFile("comma,", "md5");
         assertEquals "comma,", comma[0];
+    }
+    
+    void testScrubbedFile()
+    {
+        def s = new ScrubbedFile();
+        s.timestamp = new Date();
+        s.label = "Hello, Kitty!";
+        
+        assertEquals "Hello, Kitty!", s.label;
+    }
+    
+    void testScrubbedFileList()
+    {
+        def urlList = FileHandler.getReadyFilesUrls();
+        def prev;
+        urlList.each() { url ->
+            assertNotNull url;
+            if(prev == null)
+            {
+                prev = url.timestamp;
+            }
+            else
+            {
+                assertTrue prev > url.timestamp;
+                prev = url.timestamp;
+            }
+        }
     }
 }
