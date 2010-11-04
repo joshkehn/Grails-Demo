@@ -114,15 +114,24 @@ class Scrubber {
 	a. Does Groovy/Grails provide a mechanism for easy subtraction of sets? If not, use beanutils
 	*/
 	
-	List<String> scrub(List<String> processedFile, fileType) {
+	List<String> scrub(List<String> processedFile, String fileType) {
 		List<SupressedEmail> scrubList = SupressedEmail.list();
 		List<String> scrubEmail = new ArrayList<String>();
 		List<String> scrubMd5 = new ArrayList<String>();
+		List<String> result = null;
 		
 		for(SupressedEmail s : scrubList) {
 			scrubEmail.add(s.getEmail());
 			scrubMd5.add(s.getMd5());
 		}
+		
+		if("md5".equals(fileType)) {
+			result = CollectionUtils.subtract(processedFile,scrubMd5);
+		} else {
+			result = CollectionUtils.subtract(processedFile,scrubEmail);
+		}
+			
+		return result;
 	}
 }
 
