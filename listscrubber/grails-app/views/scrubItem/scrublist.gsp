@@ -136,11 +136,12 @@
     <body>
         <div id="wrapper">
             <h1>List Scrubber</h1>
-			<g:if test="${initview != true}">
-				<g:each in="${messages}" var="m">
-					<div class="success">${m}</div>
-				</g:each>
-			</g:if>
+		    <g:each in="${errors}" var="m">
+		        <div class="error">${m}</div>
+		    </g:each>
+			<g:each in="${successes}" var="m">
+				<div class="success">${m}</div>
+			</g:each>
             <g:form name="scrubform" action="scrublist" method="post" enctype="multipart/form-data">
                 <fieldset>
                     <legend>File Upload</legend>

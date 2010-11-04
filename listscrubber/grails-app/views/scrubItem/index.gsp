@@ -136,24 +136,22 @@
     <body>
         <div id="wrapper">
             <h1>List Scrubber</h1>
-			<g:if test="${initview != true}">
-			    <g:each in="${errors}" var="m">
-			        <div class="error">${m}</div>
-			    </g:each>
-				<g:each in="${successes}" var="m">
-					<div class="success">${m}</div>
-				</g:each>
-			</g:if>
+		    <g:each in="${errors}" var="m">
+		        <div class="error">${m}</div>
+		    </g:each>
+			<g:each in="${successes}" var="m">
+				<div class="success">${m}</div>
+			</g:each>
             <g:form name="scrubform" action="index" method="post" enctype="multipart/form-data">
                 <fieldset>
                     <legend>File Upload</legend>
-					<label for="newFileName">New File Name:</label> <g:textField name="newFileName"/><br />
-                    <label>User List to Suppress:</label>&nbsp;<input type="file" name="dirtylist" /><br />
+					<label for="fileName">New File Name:</label> <g:textField name="fileName"/><br />
+                    <label>User List to Suppress:</label>&nbsp;<input type="file" name="dirtyList" /><br />
                     <hr />
                     <h4>File Type:</h4>
-                    <label for="csvid">CSV:</label> <g:radio name="filetype" value="csv" id="csvid" /><br />
-                    <label for="md5id">MD5:</label> <g:radio name="filetype" value="md5" id="md5id" /><br />
-                    <label for="ptid">Plain Text:</label> <g:radio name="filetype" value="pt" id="ptid" /><br />
+                    <label for="csvid">CSV:</label> <g:radio name="fileType" value="csv" id="csvid" /><br />
+                    <label for="md5id">MD5:</label> <g:radio name="fileType" value="md5" id="md5id" /><br />
+                    <label for="ptid">Plain Text:</label> <g:radio name="fileType" value="pt" id="ptid" /><br />
                     <br />
                     <g:submitButton name="submit" value="Upload" />
                 </fieldset>
