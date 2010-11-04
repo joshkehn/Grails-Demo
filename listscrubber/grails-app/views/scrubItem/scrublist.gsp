@@ -136,22 +136,32 @@
     <body>
         <div id="wrapper">
             <h1>List Scrubber</h1>
-            <g:each in="${messages}" var="m">
-                <div class="success">${m}</div>
-            </g:each>
+			<g:if test="${initview != true}">
+				<g:each in="${messages}" var="m">
+					<div class="success">${m}</div>
+				</g:each>
+			</g:if>
             <g:form name="scrubform" action="scrublist" method="post" enctype="multipart/form-data">
                 <fieldset>
                     <legend>File Upload</legend>
                     <label>User List to Suppress:</label>&nbsp;<input type="file" name="dirtylist" /><br />
                     <hr />
                     <h4>File Type:</h4>
-                    <label for="csvid">CSV:</label> <g:radio name="filetype" value="csv" id="csvid" /><br />
-                    <label for="md5id">MD5:</label> <g:radio name="filetype" value="md5" id="md5id" /><br />
-                    <label for="ptid">Plain Text:</label> <g:radio name="filetype" value="pt" id="ptid" /><br />
+                    <label for="csvid">CSV2:</label> <g:radio name="filetype" value="csv" id="csvid" /><br />
+                    <label for="md5id">MD52:</label> <g:radio name="filetype" value="md5" id="md5id" /><br />
+                    <label for="ptid">Plain Text2:</label> <g:radio name="filetype" value="pt" id="ptid" /><br />
                     <br />
+					<br />
+					<label for="newFileName">New File Name:</label> <g:textField name="newFileName"/><br />
                     <input type="submit" value="Upload" />
                 </fieldset>
             </g:form>
+			<div>
+				<h4>Files Ready To Download</h4>
+				<g:each in="${urlList}" var="url">
+					<a href="www.kobemail.com">someplace</a>
+				</g:each>
+			</div>
         </div>
     </body>
 </html>

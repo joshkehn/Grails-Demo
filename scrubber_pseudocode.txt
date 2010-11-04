@@ -2,6 +2,7 @@ Controller
 ------------
 1. 	Receive file, newFileName, fileType
 	a. How do we process uploaded file in Grails?
+		A: request.getFile("[file parameter name]");
 		
 2.	Process file - use processedFileContents = FileProcessor.processFile(file,fileType)
 
@@ -14,6 +15,7 @@ Controller
 6.	Return the urls to the main view
 	a. How does the view/controller interaction work in Grails?
 	b. How do we spin Controller steps 2 - 4 as a separate thread? Suggestion: Grails BackgroundThread Plugin
+					
 	
 	
 FileProcessor

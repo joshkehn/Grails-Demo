@@ -145,10 +145,12 @@
                     <label>User List to Suppress:</label>&nbsp;<input type="file" name="dirtylist" /><br />
                     <hr />
                     <h4>File Type:</h4>
-                    <label for="csvid">CSV:</label> <g:radio name="filetype" value="csv" id="csvid" /><br />
-                    <label for="md5id">MD5:</label> <g:radio name="filetype" value="md5" id="md5id" /><br />
-                    <label for="ptid">Plain Text:</label> <g:radio name="filetype" value="pt" id="ptid" /><br />
+                    <label for="csvid">CSV1:</label> <g:radio name="filetype" value="csv" id="csvid" /><br />
+                    <label for="md5id">MD51:</label> <g:radio name="filetype" value="md5" id="md5id" /><br />
+                    <label for="ptid">Plain Text1:</label> <g:radio name="filetype" value="pt" id="ptid" /><br />
                     <br />
+					<br />
+					<label for="newFileName">New File Name:</label> <g:textField name="newFileName"/><br />                    
                     <input type="submit" value="Upload" />
                 </fieldset>
             </g:form>
