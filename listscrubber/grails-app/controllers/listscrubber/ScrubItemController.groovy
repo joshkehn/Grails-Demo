@@ -3,39 +3,34 @@ package listscrubber;
 class ScrubItemController {
 
     def index = {
-        
-        if(params.fileType && params.dirtyList && params.fileName)
-        {
+        def errors = [];
+        def successes = [];
+        if(params.fileType && !request.getFile("dirtyFile").empty && params.fileName)
+        {   
             def valid = true;
             def dirtyFile = request.getFile("dirtyFile");
-            def contents = dirtyFile.inputStream.text;
+            def contents;
+            
+            if(!dirtyFile.empty)
+            {
+                contents = dirtyFile.inputStream.text;
+            }
+            
             def fileType = params.fileType;
             def fileName = params.fileName;
             
             println "Contents: " + contents
             println "File Type: " + fileType
             println "File Name: " + fileName
-            [successes:['File upload successful.']]                
+            successes.add('File upload successful.');              
         }
-        else if(params.fileType || params.dirtyList || params.fileName)
+        else if(params.fileType || !request.getFile("dirtyFile").empty || params.fileName)
         {
-            [errors:['One or more options were not filled out. Every field is required.']];
+            errors.add('One or more options were not filled out. Every field is required.');
         }
+        
+        [urlList: FileHandler.getReadyFilesUrls(), errors: errors, successes: successes]
     }
-    
-/*    def scrubfile = {
-        FileHandler cmd ->
-            if(cmd.hasErrors())
-            {
-                redirect(action:'index', errors:['All fields are required.']);
-            }
-            else
-            {
-/*                [successes:['File uploaded successfully.']]
-                redirect(action:'index', successes:['File uploaded successfully.']);
-            }
-
-    }*/
 }
 
 class FileHandler
@@ -49,4 +44,24 @@ class FileHandler
         fileName(blank: false)
         dirtyFile(blank: false)
     }
+    
+    static getReadyFilesUrls()
+    {
+        def urlList = [];
+        ScrubbedFile f = new ScrubbedFile();
+        f.timestamp = "now";
+        f.label = "Hello";
+        urlList.add(f);
+        f.timestamp = "yesterday";
+        f.label = "World";
+        urlList.add(f);
+        urlList;
+    }
+    
+}
+
+class ScrubbedFile
+{
+    String timestamp;
+    String label;
 }

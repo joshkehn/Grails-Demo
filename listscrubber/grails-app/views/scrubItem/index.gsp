@@ -146,7 +146,7 @@
                 <fieldset>
                     <legend>File Upload</legend>
 					<label for="fileName">New File Name:</label> <g:textField name="fileName"/><br />
-                    <label>User List to Suppress:</label>&nbsp;<input type="file" name="dirtyList" /><br />
+                    <label>User List to Suppress:</label>&nbsp;<input type="file" name="dirtyFile" /><br />
                     <hr />
                     <h4>File Type:</h4>
                     <label for="csvid">CSV:</label> <g:radio name="fileType" value="csv" id="csvid" /><br />
@@ -159,9 +159,22 @@
             <hr />
 			<h4>Files Ready To Download</h4>
 			<div class="box">
-				<g:each in="${urlList}" var="url">
-					<a href="#">${url}</a>
-				</g:each>
+			    <table>
+			        <thead>
+			            <th>Label</th>
+			            <th>Timestamp</th>
+			            <th></th>
+			        </thead>
+			        <tbody>
+        				<g:each in="${urlList}" var="url">
+        				    <tr>
+        				        <td>${url.label}</td>
+        				        <td>${url.timestamp}</td>
+        				        <td><a href="#">Download</a></td>
+        				    </tr>
+        				</g:each>
+    			    </tbody>
+    			</table>
 			</div>
         </div>
     </body>

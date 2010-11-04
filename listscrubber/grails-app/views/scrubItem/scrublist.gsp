@@ -145,7 +145,7 @@
             <g:form name="scrubform" action="scrublist" method="post" enctype="multipart/form-data">
                 <fieldset>
                     <legend>File Upload</legend>
-                    <label>User List to Suppress:</label>&nbsp;<input type="file" name="dirtylist" /><br />
+                    <label>User List to Suppress:</label>&nbsp;<input type="file" name="dirtyList" /><br />
                     <hr />
                     <h4>File Type:</h4>
                     <label for="csvid">CSV2:</label> <g:radio name="filetype" value="csv" id="csvid" /><br />
