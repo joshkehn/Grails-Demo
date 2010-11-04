@@ -7,7 +7,7 @@ package listscrubber;
         if(params.fileType && params.dirtyList && params.fileName)
         {
             def valid = true;
-            def dirtyFile = request.getFile("dirtyFile");
+            def dirtyFile = request.getFile("dirtylist");
             def contents = dirtyFile.inputStream.text;
             def fileType = params.fileType;
             def fileName = params.fileName;
