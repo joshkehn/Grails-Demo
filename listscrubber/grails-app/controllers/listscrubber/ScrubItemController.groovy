@@ -50,6 +50,19 @@ class FileHandler
         fileName(blank: false)
         dirtyFile(blank: false)
     }
+    static processFile(String contents, String fileType)
+    {
+        def clean = contents;
+        if(fileType == "csv")
+        {
+            /**
+            * Process
+            */
+/*            clean = clean.replaceAll(Pattern.compile('/,/'), "");*/
+            clean = clean.replace(',', '');
+        }
+        clean
+    }
     static getReadyFilesUrls()
     {
         def urlList = [];
@@ -61,7 +74,7 @@ class FileHandler
                 {
                     def s = new ScrubbedFile();
                     s.label = file.name;
-                    s.timestamp = "00:00";
+                    s.timestamp = file.lastModified();
                     urlList.add(s);
                 }
                 else
@@ -74,7 +87,8 @@ class FileHandler
         {
             println "File doesn't exist";
         }
-        urlList
+        
+        urlList.sort{ -it.timestamp }
     }
     
     static saveReadyFile(String contents, String name)
