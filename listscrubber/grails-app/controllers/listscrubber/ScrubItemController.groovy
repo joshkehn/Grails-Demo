@@ -62,7 +62,7 @@ class FileHandler
     }
     static getReadyFilesUrls()
     {
-        def urlList = [];
+        def urlList = [];       
         def f = new File('web-app' + fileSeparator + 'ready');
         if(f.exists())
         {
@@ -91,7 +91,7 @@ class FileHandler
     static saveReadyFile(String contents, String name)
     {
         println "Saving to " + name
-        new File('web-app' + fileSeparator + 'ready' + fileSeparator + '' + name).write(contents);        
+        new File('web-app' + fileSeparator + 'ready' + fileSeparator + '' + name).write(contents);
     }
     
 }

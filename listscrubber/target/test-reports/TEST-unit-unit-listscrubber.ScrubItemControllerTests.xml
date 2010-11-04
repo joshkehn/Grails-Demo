@@ -1,18 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite errors="0" failures="0" hostname="Emprivo.local" name="listscrubber.ScrubItemControllerTests" tests="3" time="0.089" timestamp="2010-11-04T21:51:38">
+<testsuite errors="0" failures="0" hostname="Emprivo.local" name="listscrubber.ScrubItemControllerTests" tests="5" time="0.43" timestamp="2010-11-04T22:07:41">
   <properties />
-  <testcase classname="listscrubber.ScrubItemControllerTests" name="testCsvProcessing" time="0.066" />
-  <testcase classname="listscrubber.ScrubItemControllerTests" name="testMD5Processing" time="0.011" />
-  <testcase classname="listscrubber.ScrubItemControllerTests" name="testPlainTextProcessing" time="0.0070" />
-  <system-out><![CDATA[--Output from testCsvProcessing--
-Testing csv file processing
+  <testcase classname="listscrubber.ScrubItemControllerTests" name="testCSVProcessing" time="0.16" />
+  <testcase classname="listscrubber.ScrubItemControllerTests" name="testMD5Processing" time="0.041" />
+  <testcase classname="listscrubber.ScrubItemControllerTests" name="testPlainTextProcessing" time="0.046" />
+  <testcase classname="listscrubber.ScrubItemControllerTests" name="testScrubbedFile" time="0.038" />
+  <testcase classname="listscrubber.ScrubItemControllerTests" name="testScrubbedFileList" time="0.126" />
+  <system-out><![CDATA[--Output from testCSVProcessing--
 --Output from testMD5Processing--
-Testing md5 file processing
 --Output from testPlainTextProcessing--
-Testing plain text file processing
+--Output from testScrubbedFile--
+--Output from testScrubbedFileList--
 ]]></system-out>
-  <system-err><![CDATA[--Output from testCsvProcessing--
+  <system-err><![CDATA[--Output from testCSVProcessing--
 --Output from testMD5Processing--
 --Output from testPlainTextProcessing--
+--Output from testScrubbedFile--
+--Output from testScrubbedFileList--
 ]]></system-err>
 </testsuite>

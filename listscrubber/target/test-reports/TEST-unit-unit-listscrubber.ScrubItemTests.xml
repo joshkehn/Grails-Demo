@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite errors="0" failures="0" hostname="Emprivo.local" name="listscrubber.ScrubItemTests" tests="1" time="0.0030" timestamp="2010-11-04T21:51:38">
+<testsuite errors="0" failures="0" hostname="Emprivo.local" name="listscrubber.ScrubItemTests" tests="1" time="0.0080" timestamp="2010-11-04T22:07:42">
   <properties />
-  <testcase classname="listscrubber.ScrubItemTests" name="testSomething" time="0.0020" />
+  <testcase classname="listscrubber.ScrubItemTests" name="testSomething" time="0.0070" />
   <system-out><![CDATA[--Output from testSomething--
 ]]></system-out>
   <system-err><![CDATA[--Output from testSomething--

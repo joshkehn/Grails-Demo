@@ -1,4 +1,6 @@
---Output from testCsvProcessing--
+--Output from testCSVProcessing--
 --Output from testMD5Processing--
 --Output from testPlainTextProcessing--
+--Output from testScrubbedFile--
+--Output from testScrubbedFileList--
 
