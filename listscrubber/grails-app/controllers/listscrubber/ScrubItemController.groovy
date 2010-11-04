@@ -44,7 +44,7 @@ class FileHandler
     String fileType;
     String fileName;
     String dirtyFile;
-    
+    static def fileSeparator = File.separatorChar;
     static constraints = {
         fileType(blank: false)
         fileName(blank: false)
@@ -53,7 +53,7 @@ class FileHandler
     static getReadyFilesUrls()
     {
         def urlList = [];
-        def f = new File('web-app/ready');
+        def f = new File('web-app' + fileSeparator + 'ready');
         if(f.exists())
         {
             f.eachFile() { file -> 
@@ -80,7 +80,7 @@ class FileHandler
     static saveReadyFile(String contents, String name)
     {
         println "Saving to " + name
-        new File('web-app/ready/' + name).write(contents);        
+        new File('web-app' + fileSeparator + 'ready' + fileSeparator + '' + name).write(contents);        
     }
     
 }
