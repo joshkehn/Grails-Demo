@@ -19,17 +19,12 @@ class ScrubItemController {
             if(!dirtyFile.empty)
             {
                 contents = dirtyFile.inputStream.text;
-				
-				println "contents: " + contents;				
                 
                 List<String> processedFile = FileHandler.processFile(contents, fileType);
-				println "processedFile: " + processedFile;
 				
 				List<String> scrubbedFile = Scrubber.scrub(processedFile, fileType);
-				println "scrubbedFile: " + scrubbedFile;
 				
 				def result = scrubbedFile.join("\n")
-				println "result: " + result;
                 
                 FileHandler.saveReadyFile(result, fileName);
             }
