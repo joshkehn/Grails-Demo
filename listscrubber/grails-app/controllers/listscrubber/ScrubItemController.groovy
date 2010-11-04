@@ -1,12 +1,8 @@
 package listscrubber;
 
-<<<<<<< HEAD
- class ScrubItemController {
 
-=======
 class ScrubItemController {
     
->>>>>>> b3bac845194abe6f02f1af0b7ddda9dcbbf33ccb
     def index = {
         def errors = [];
         def successes = [];
@@ -14,13 +10,8 @@ class ScrubItemController {
         if(params.fileType && !request.getFile("dirtyFile").empty && params.fileName)
         {   
             def valid = true;
-<<<<<<< HEAD
-            def dirtyFile = request.getFile("dirtylist");
-            def contents = dirtyFile.inputStream.text;
-=======
             def dirtyFile = request.getFile("dirtyFile");
             def contents;
->>>>>>> b3bac845194abe6f02f1af0b7ddda9dcbbf33ccb
             def fileType = params.fileType;
             def fileName = params.fileName;
             
@@ -54,17 +45,31 @@ class FileHandler
     String fileType;
     String fileName;
     String dirtyFile;
-    
+    static def fileSeparator = File.separatorChar;
     static constraints = {
         fileType(blank: false)
         fileName(blank: false)
         dirtyFile(blank: false)
     }
+
+    static processFile(String contents, String fileType)
+    {
+        def clean = contents;
+        if(fileType == "csv")
+        {
+            /**
+            * Process
+            */
+/*            clean = clean.replaceAll(Pattern.compile('/,/'), "");*/
+            clean = clean.replace(',', '');
+        }
+        clean
+    }
 	
-	static getReadyFilesUrls()
+    static getReadyFilesUrls()
     {
         def urlList = [];
-        def f = new File('web-app/ready');
+        def f = new File('web-app' + fileSeparator + 'ready');
         if(f.exists())
         {
             f.eachFile() { file -> 
@@ -72,7 +77,7 @@ class FileHandler
                 {
                     def s = new ScrubbedFile();
                     s.label = file.name;
-                    s.timestamp = "00:00";
+                    s.timestamp = file.lastModified();
                     urlList.add(s);
                 }
                 else
@@ -85,13 +90,14 @@ class FileHandler
         {
             println "File doesn't exist";
         }
-        urlList
+        
+        urlList.sort{ -it.timestamp }
     }
     
     static saveReadyFile(String contents, String name)
     {
         println "Saving to " + name
-        new File('web-app/ready/' + name).write(contents);        
+        new File('web-app' + fileSeparator + 'ready' + fileSeparator + '' + name).write(contents);        
     }
 }
 
