@@ -148,11 +148,11 @@
 					<label for="fileName">New File Name:</label> <g:textField name="fileName"/><br />
                     <label>User List to Suppress:</label>&nbsp;<input type="file" name="dirtyFile" /><br />
                     <hr />
-                    <h4>File Type:</h4>
-                    <label for="csvid">CSV:</label> <g:radio name="fileType" value="csv" id="csvid" /><br />
-                    <label for="md5id">MD5:</label> <g:radio name="fileType" value="md5" id="md5id" /><br />
-                    <label for="ptid">Plain Text:</label> <g:radio name="fileType" value="pt" id="ptid" /><br />
-                    <br />
+                    <h6>File Type:</h6>
+                    <label for="csvid">CSV:</label> <g:radio name="fileType" value="csv" id="csvid" />
+                    <label for="md5id">MD5:</label> <g:radio name="fileType" value="md5" id="md5id" />
+                    <label for="ptid">Plain Text:</label> <g:radio name="fileType" value="pt" id="ptid" />
+                    <br /><br />
                     <g:submitButton name="submit" value="Upload" />
                 </fieldset>
             </g:form>
@@ -163,14 +163,16 @@
 			        <thead>
 			            <th>Label</th>
 			            <th>Timestamp</th>
+			            <th>Actions</th>
 			            <th></th>
 			        </thead>
 			        <tbody>
         				<g:each in="${urlList}" var="url">
         				    <tr>
-        				        <td>${url.label.decodeURL()}</td>
-        				        <td>${new Date(url.timestamp)}</td>
-        				        <td><a href="${createLinkTo(dir: 'ready', file: url.label.decodeURL())}">Download</a></td>
+        				        <td>${ url.label.decodeURL() }</td>
+        				        <td>${ new Date(url.timestamp); }</td>
+                                <td><a href="${createLinkTo(dir: 'ready', file: url.label.decodeURL(), absolute: true)}">View</a></td>
+        				        <td><g:link action="download" id="${url.label}">Download</g:link></td>
         				    </tr>
         				</g:each>
     			    </tbody>

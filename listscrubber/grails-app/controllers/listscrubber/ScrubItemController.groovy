@@ -44,6 +44,15 @@ class ScrubItemController {
         
         [urlList: FileHandler.getReadyFilesUrls(), errors: errors, successes: successes]
     }
+    
+    def download = {
+        def filename = params.id;
+        def file = new File("web-app/ready/" + filename);
+        response.setHeader("Content-disposition", "attachment; filename=${file.name}");
+        response.contentType = "text/plain";
+        response.outputStream << file.text;
+        response.outputStream.flush();
+    }
 }
 
 class FileHandler
