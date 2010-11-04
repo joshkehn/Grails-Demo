@@ -2131,3 +2131,285 @@ Possible solutions: scrub(java.util.List, java.lang.String)
 	at listscrubber.ScrubItemController$_closure1.doCall(ScrubItemController.groovy:27)
 	at listscrubber.ScrubItemController$_closure1.doCall(ScrubItemController.groovy)
 	at java.lang.Thread.run(Thread.java:619)
+2010-11-04 19:43:38,116 [http-8080-3] ERROR StackTrace  - Sanitizing stacktrace:
+org.codehaus.groovy.control.MultipleCompilationErrorsException: startup failed:
+C__Users_rvilensky_Desktop_KobeMail_Security_Grails_Demo_listscrubber_grails_app_views_scrubItem_index_gsp: 60: Expression list of the form (a; b; c) is not supported in this context. at line: 60 column: 16. File: C__Users_rvilensky_Desktop_KobeMail_Security_Grails_Demo_listscrubber_grails_app_views_scrubItem_index_gsp @ line 60, column 16.
+   codecOut.print(new Date(url.timestamp);)
+                  ^
+
+1 error
+
+	at org.codehaus.groovy.control.ErrorCollector.failIfErrors(ErrorCollector.java:296)
+	at org.codehaus.groovy.control.CompilationUnit.applyToSourceUnits(CompilationUnit.java:829)
+	at org.codehaus.groovy.control.CompilationUnit.doPhaseOperation(CompilationUnit.java:511)
+	at org.codehaus.groovy.control.CompilationUnit.processPhaseOperations(CompilationUnit.java:487)
+	at org.codehaus.groovy.control.CompilationUnit.compile(CompilationUnit.java:464)
+	at groovy.lang.GroovyClassLoader.doParseClass(GroovyClassLoader.java:306)
+	at groovy.lang.GroovyClassLoader.parseClass(GroovyClassLoader.java:287)
+	at groovy.lang.GroovyClassLoader.parseClass(GroovyClassLoader.java:267)
+	at groovy.lang.GroovyClassLoader.parseClass(GroovyClassLoader.java:214)
+	at org.codehaus.groovy.grails.web.pages.GroovyPagesTemplateEngine.compileGroovyPage(GroovyPagesTemplateEngine.java:640)
+	at org.codehaus.groovy.grails.web.pages.GroovyPagesTemplateEngine.buildPageMetaInfo(GroovyPagesTemplateEngine.java:590)
+	at org.codehaus.groovy.grails.web.pages.GroovyPagesTemplateEngine.createTemplate(GroovyPagesTemplateEngine.java:493)
+	at org.codehaus.groovy.grails.web.pages.GroovyPagesTemplateEngine.createTemplateWithResource(GroovyPagesTemplateEngine.java:473)
+	at org.codehaus.groovy.grails.web.pages.GroovyPagesTemplateEngine.createTemplate(GroovyPagesTemplateEngine.java:246)
+	at org.codehaus.groovy.grails.web.pages.GroovyPagesTemplateEngine.createTemplateForUri(GroovyPagesTemplateEngine.java:373)
+	at org.codehaus.groovy.grails.web.pages.GroovyPagesTemplateEngine.createTemplateForUri(GroovyPagesTemplateEngine.java:345)
+	at org.codehaus.groovy.grails.web.pages.GroovyPagesTemplateEngine.createTemplate(GroovyPagesTemplateEngine.java:262)
+	at org.codehaus.groovy.grails.web.servlet.view.GroovyPageView.renderWithTemplateEngine(GroovyPageView.java:144)
+	at org.codehaus.groovy.grails.web.servlet.view.GroovyPageView.renderMergedOutputModel(GroovyPageView.java:79)
+	at org.springframework.web.servlet.view.AbstractView.render(AbstractView.java:250)
+	at org.springframework.web.servlet.DispatcherServlet.render(DispatcherServlet.java:1063)
+	at org.codehaus.groovy.grails.web.servlet.GrailsDispatcherServlet.doDispatch(GrailsDispatcherServlet.java:329)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:719)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:644)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:549)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:707)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:820)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:290)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:70)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:235)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:70)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:235)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:70)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:235)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at org.apache.catalina.core.ApplicationDispatcher.invoke(ApplicationDispatcher.java:646)
+	at org.apache.catalina.core.ApplicationDispatcher.processRequest(ApplicationDispatcher.java:436)
+	at org.apache.catalina.core.ApplicationDispatcher.doForward(ApplicationDispatcher.java:374)
+	at org.apache.catalina.core.ApplicationDispatcher.forward(ApplicationDispatcher.java:302)
+	at org.codehaus.groovy.grails.web.util.WebUtils.forwardRequestForUrlMappingInfo(WebUtils.java:293)
+	at org.codehaus.groovy.grails.web.util.WebUtils.forwardRequestForUrlMappingInfo(WebUtils.java:260)
+	at org.codehaus.groovy.grails.web.util.WebUtils.forwardRequestForUrlMappingInfo(WebUtils.java:251)
+	at org.codehaus.groovy.grails.web.mapping.filter.UrlMappingsFilter.doFilterInternal(UrlMappingsFilter.java:183)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:76)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:235)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at org.codehaus.groovy.grails.web.sitemesh.GrailsPageFilter.obtainContent(GrailsPageFilter.java:246)
+	at org.codehaus.groovy.grails.web.sitemesh.GrailsPageFilter.doFilter(GrailsPageFilter.java:135)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:235)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at org.codehaus.groovy.grails.web.servlet.mvc.GrailsWebRequestFilter.doFilterInternal(GrailsWebRequestFilter.java:69)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:76)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:235)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at org.codehaus.groovy.grails.web.filters.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:69)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:76)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:235)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:88)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:76)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:237)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:167)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:235)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:233)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:191)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:128)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:102)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:109)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:293)
+	at org.apache.coyote.http11.Http11Processor.process(Http11Processor.java:849)
+	at org.apache.coyote.http11.Http11Protocol$Http11ConnectionHandler.process(Http11Protocol.java:583)
+	at org.apache.tomcat.util.net.JIoEndpoint$Worker.run(JIoEndpoint.java:454)
+	at java.lang.Thread.run(Thread.java:619)
+2010-11-04 19:43:38,118 [http-8080-3] ERROR StackTrace  - Sanitizing stacktrace:
+org.codehaus.groovy.grails.web.pages.exceptions.GroovyPagesException: Could not parse script [C__Users_rvilensky_Desktop_KobeMail_Security_Grails_Demo_listscrubber_grails_app_views_scrubItem_index_gsp]: startup failed:
+C__Users_rvilensky_Desktop_KobeMail_Security_Grails_Demo_listscrubber_grails_app_views_scrubItem_index_gsp: 60: Expression list of the form (a; b; c) is not supported in this context. at line: 60 column: 16. File: C__Users_rvilensky_Desktop_KobeMail_Security_Grails_Demo_listscrubber_grails_app_views_scrubItem_index_gsp @ line 60, column 16.
+   codecOut.print(new Date(url.timestamp);)
+                  ^
+
+1 error
+
+	at org.codehaus.groovy.grails.web.pages.GroovyPagesTemplateEngine.compileGroovyPage(GroovyPagesTemplateEngine.java:651)
+	at org.codehaus.groovy.grails.web.pages.GroovyPagesTemplateEngine.buildPageMetaInfo(GroovyPagesTemplateEngine.java:590)
+	at org.codehaus.groovy.grails.web.pages.GroovyPagesTemplateEngine.createTemplate(GroovyPagesTemplateEngine.java:493)
+	at org.codehaus.groovy.grails.web.pages.GroovyPagesTemplateEngine.createTemplateWithResource(GroovyPagesTemplateEngine.java:473)
+	at org.codehaus.groovy.grails.web.pages.GroovyPagesTemplateEngine.createTemplate(GroovyPagesTemplateEngine.java:246)
+	at org.codehaus.groovy.grails.web.pages.GroovyPagesTemplateEngine.createTemplateForUri(GroovyPagesTemplateEngine.java:373)
+	at org.codehaus.groovy.grails.web.pages.GroovyPagesTemplateEngine.createTemplateForUri(GroovyPagesTemplateEngine.java:345)
+	at org.codehaus.groovy.grails.web.pages.GroovyPagesTemplateEngine.createTemplate(GroovyPagesTemplateEngine.java:262)
+	at org.codehaus.groovy.grails.web.servlet.view.GroovyPageView.renderWithTemplateEngine(GroovyPageView.java:144)
+	at org.codehaus.groovy.grails.web.servlet.view.GroovyPageView.renderMergedOutputModel(GroovyPageView.java:79)
+	at org.springframework.web.servlet.view.AbstractView.render(AbstractView.java:250)
+	at org.springframework.web.servlet.DispatcherServlet.render(DispatcherServlet.java:1063)
+	at org.codehaus.groovy.grails.web.servlet.GrailsDispatcherServlet.doDispatch(GrailsDispatcherServlet.java:329)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:719)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:644)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:549)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:707)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:820)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:290)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:70)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:235)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:70)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:235)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:70)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:235)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at org.apache.catalina.core.ApplicationDispatcher.invoke(ApplicationDispatcher.java:646)
+	at org.apache.catalina.core.ApplicationDispatcher.processRequest(ApplicationDispatcher.java:436)
+	at org.apache.catalina.core.ApplicationDispatcher.doForward(ApplicationDispatcher.java:374)
+	at org.apache.catalina.core.ApplicationDispatcher.forward(ApplicationDispatcher.java:302)
+	at org.codehaus.groovy.grails.web.util.WebUtils.forwardRequestForUrlMappingInfo(WebUtils.java:293)
+	at org.codehaus.groovy.grails.web.util.WebUtils.forwardRequestForUrlMappingInfo(WebUtils.java:260)
+	at org.codehaus.groovy.grails.web.util.WebUtils.forwardRequestForUrlMappingInfo(WebUtils.java:251)
+	at org.codehaus.groovy.grails.web.mapping.filter.UrlMappingsFilter.doFilterInternal(UrlMappingsFilter.java:183)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:76)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:235)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at org.codehaus.groovy.grails.web.sitemesh.GrailsPageFilter.obtainContent(GrailsPageFilter.java:246)
+	at org.codehaus.groovy.grails.web.sitemesh.GrailsPageFilter.doFilter(GrailsPageFilter.java:135)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:235)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at org.codehaus.groovy.grails.web.servlet.mvc.GrailsWebRequestFilter.doFilterInternal(GrailsWebRequestFilter.java:69)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:76)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:235)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at org.codehaus.groovy.grails.web.filters.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:69)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:76)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:235)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:88)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:76)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:237)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:167)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:235)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:233)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:191)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:128)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:102)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:109)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:293)
+	at org.apache.coyote.http11.Http11Processor.process(Http11Processor.java:849)
+	at org.apache.coyote.http11.Http11Protocol$Http11ConnectionHandler.process(Http11Protocol.java:583)
+	at org.apache.tomcat.util.net.JIoEndpoint$Worker.run(JIoEndpoint.java:454)
+	at java.lang.Thread.run(Thread.java:619)
+Caused by: org.codehaus.groovy.control.MultipleCompilationErrorsException: startup failed:
+C__Users_rvilensky_Desktop_KobeMail_Security_Grails_Demo_listscrubber_grails_app_views_scrubItem_index_gsp: 60: Expression list of the form (a; b; c) is not supported in this context. at line: 60 column: 16. File: C__Users_rvilensky_Desktop_KobeMail_Security_Grails_Demo_listscrubber_grails_app_views_scrubItem_index_gsp @ line 60, column 16.
+   codecOut.print(new Date(url.timestamp);)
+                  ^
+
+1 error
+
+	at org.codehaus.groovy.control.ErrorCollector.failIfErrors(ErrorCollector.java:296)
+	at org.codehaus.groovy.control.CompilationUnit.applyToSourceUnits(CompilationUnit.java:829)
+	at org.codehaus.groovy.control.CompilationUnit.doPhaseOperation(CompilationUnit.java:511)
+	at org.codehaus.groovy.control.CompilationUnit.processPhaseOperations(CompilationUnit.java:487)
+	at org.codehaus.groovy.control.CompilationUnit.compile(CompilationUnit.java:464)
+	... 1 more
+2010-11-04 19:43:38,330 [http-8080-3] ERROR StackTrace  - Sanitizing stacktrace:
+org.codehaus.groovy.control.MultipleCompilationErrorsException: startup failed:
+C__Users_rvilensky_Desktop_KobeMail_Security_Grails_Demo_listscrubber_grails_app_views_scrubItem_index_gsp: 60: Expression list of the form (a; b; c) is not supported in this context. at line: 60 column: 16. File: C__Users_rvilensky_Desktop_KobeMail_Security_Grails_Demo_listscrubber_grails_app_views_scrubItem_index_gsp @ line 60, column 16.
+   codecOut.print(new Date(url.timestamp);)
+                  ^
+
+1 error
+
+	at org.codehaus.groovy.control.ErrorCollector.failIfErrors(ErrorCollector.java:296)
+	at org.codehaus.groovy.control.CompilationUnit.applyToSourceUnits(CompilationUnit.java:829)
+	at org.codehaus.groovy.control.CompilationUnit.doPhaseOperation(CompilationUnit.java:511)
+	at org.codehaus.groovy.control.CompilationUnit.processPhaseOperations(CompilationUnit.java:487)
+	at org.codehaus.groovy.control.CompilationUnit.compile(CompilationUnit.java:464)
+	at java.lang.Thread.run(Thread.java:619)
+2010-11-04 19:43:38,331 [http-8080-3] ERROR StackTrace  - Sanitizing stacktrace:
+org.codehaus.groovy.grails.web.pages.exceptions.GroovyPagesException: Could not parse script [C__Users_rvilensky_Desktop_KobeMail_Security_Grails_Demo_listscrubber_grails_app_views_scrubItem_index_gsp]: startup failed:
+C__Users_rvilensky_Desktop_KobeMail_Security_Grails_Demo_listscrubber_grails_app_views_scrubItem_index_gsp: 60: Expression list of the form (a; b; c) is not supported in this context. at line: 60 column: 16. File: C__Users_rvilensky_Desktop_KobeMail_Security_Grails_Demo_listscrubber_grails_app_views_scrubItem_index_gsp @ line 60, column 16.
+   codecOut.print(new Date(url.timestamp);)
+                  ^
+
+1 error
+
+	at java.lang.Thread.run(Thread.java:619)
+Caused by: org.codehaus.groovy.control.MultipleCompilationErrorsException: startup failed:
+C__Users_rvilensky_Desktop_KobeMail_Security_Grails_Demo_listscrubber_grails_app_views_scrubItem_index_gsp: 60: Expression list of the form (a; b; c) is not supported in this context. at line: 60 column: 16. File: C__Users_rvilensky_Desktop_KobeMail_Security_Grails_Demo_listscrubber_grails_app_views_scrubItem_index_gsp @ line 60, column 16.
+   codecOut.print(new Date(url.timestamp);)
+                  ^
+
+1 error
+
+	at org.codehaus.groovy.control.ErrorCollector.failIfErrors(ErrorCollector.java:296)
+	at org.codehaus.groovy.control.CompilationUnit.applyToSourceUnits(CompilationUnit.java:829)
+	at org.codehaus.groovy.control.CompilationUnit.doPhaseOperation(CompilationUnit.java:511)
+	at org.codehaus.groovy.control.CompilationUnit.processPhaseOperations(CompilationUnit.java:487)
+	at org.codehaus.groovy.control.CompilationUnit.compile(CompilationUnit.java:464)
+	... 1 more
+2010-11-04 19:44:27,933 [http-8080-3] ERROR StackTrace  - Sanitizing stacktrace:
+org.codehaus.groovy.control.MultipleCompilationErrorsException: startup failed:
+C__Users_rvilensky_Desktop_KobeMail_Security_Grails_Demo_listscrubber_grails_app_views_scrubItem_index_gsp: 60: Expression list of the form (a; b; c) is not supported in this context. at line: 60 column: 16. File: C__Users_rvilensky_Desktop_KobeMail_Security_Grails_Demo_listscrubber_grails_app_views_scrubItem_index_gsp @ line 60, column 16.
+   codecOut.print(new Date(url.timestamp);)
+                  ^
+
+1 error
+
+	at org.codehaus.groovy.control.ErrorCollector.failIfErrors(ErrorCollector.java:296)
+	at org.codehaus.groovy.control.CompilationUnit.applyToSourceUnits(CompilationUnit.java:829)
+	at org.codehaus.groovy.control.CompilationUnit.doPhaseOperation(CompilationUnit.java:511)
+	at org.codehaus.groovy.control.CompilationUnit.processPhaseOperations(CompilationUnit.java:487)
+	at org.codehaus.groovy.control.CompilationUnit.compile(CompilationUnit.java:464)
+	at java.lang.Thread.run(Thread.java:619)
+2010-11-04 19:44:27,933 [http-8080-3] ERROR StackTrace  - Sanitizing stacktrace:
+org.codehaus.groovy.grails.web.pages.exceptions.GroovyPagesException: Could not parse script [C__Users_rvilensky_Desktop_KobeMail_Security_Grails_Demo_listscrubber_grails_app_views_scrubItem_index_gsp]: startup failed:
+C__Users_rvilensky_Desktop_KobeMail_Security_Grails_Demo_listscrubber_grails_app_views_scrubItem_index_gsp: 60: Expression list of the form (a; b; c) is not supported in this context. at line: 60 column: 16. File: C__Users_rvilensky_Desktop_KobeMail_Security_Grails_Demo_listscrubber_grails_app_views_scrubItem_index_gsp @ line 60, column 16.
+   codecOut.print(new Date(url.timestamp);)
+                  ^
+
+1 error
+
+	at java.lang.Thread.run(Thread.java:619)
+Caused by: org.codehaus.groovy.control.MultipleCompilationErrorsException: startup failed:
+C__Users_rvilensky_Desktop_KobeMail_Security_Grails_Demo_listscrubber_grails_app_views_scrubItem_index_gsp: 60: Expression list of the form (a; b; c) is not supported in this context. at line: 60 column: 16. File: C__Users_rvilensky_Desktop_KobeMail_Security_Grails_Demo_listscrubber_grails_app_views_scrubItem_index_gsp @ line 60, column 16.
+   codecOut.print(new Date(url.timestamp);)
+                  ^
+
+1 error
+
+	at org.codehaus.groovy.control.ErrorCollector.failIfErrors(ErrorCollector.java:296)
+	at org.codehaus.groovy.control.CompilationUnit.applyToSourceUnits(CompilationUnit.java:829)
+	at org.codehaus.groovy.control.CompilationUnit.doPhaseOperation(CompilationUnit.java:511)
+	at org.codehaus.groovy.control.CompilationUnit.processPhaseOperations(CompilationUnit.java:487)
+	at org.codehaus.groovy.control.CompilationUnit.compile(CompilationUnit.java:464)
+	... 1 more
+2010-11-04 19:44:28,136 [http-8080-3] ERROR StackTrace  - Sanitizing stacktrace:
+org.codehaus.groovy.control.MultipleCompilationErrorsException: startup failed:
+C__Users_rvilensky_Desktop_KobeMail_Security_Grails_Demo_listscrubber_grails_app_views_scrubItem_index_gsp: 60: Expression list of the form (a; b; c) is not supported in this context. at line: 60 column: 16. File: C__Users_rvilensky_Desktop_KobeMail_Security_Grails_Demo_listscrubber_grails_app_views_scrubItem_index_gsp @ line 60, column 16.
+   codecOut.print(new Date(url.timestamp);)
+                  ^
+
+1 error
+
+	at org.codehaus.groovy.control.ErrorCollector.failIfErrors(ErrorCollector.java:296)
+	at org.codehaus.groovy.control.CompilationUnit.applyToSourceUnits(CompilationUnit.java:829)
+	at org.codehaus.groovy.control.CompilationUnit.doPhaseOperation(CompilationUnit.java:511)
+	at org.codehaus.groovy.control.CompilationUnit.processPhaseOperations(CompilationUnit.java:487)
+	at org.codehaus.groovy.control.CompilationUnit.compile(CompilationUnit.java:464)
+	at java.lang.Thread.run(Thread.java:619)
+2010-11-04 19:44:28,137 [http-8080-3] ERROR StackTrace  - Sanitizing stacktrace:
+org.codehaus.groovy.grails.web.pages.exceptions.GroovyPagesException: Could not parse script [C__Users_rvilensky_Desktop_KobeMail_Security_Grails_Demo_listscrubber_grails_app_views_scrubItem_index_gsp]: startup failed:
+C__Users_rvilensky_Desktop_KobeMail_Security_Grails_Demo_listscrubber_grails_app_views_scrubItem_index_gsp: 60: Expression list of the form (a; b; c) is not supported in this context. at line: 60 column: 16. File: C__Users_rvilensky_Desktop_KobeMail_Security_Grails_Demo_listscrubber_grails_app_views_scrubItem_index_gsp @ line 60, column 16.
+   codecOut.print(new Date(url.timestamp);)
+                  ^
+
+1 error
+
+	at java.lang.Thread.run(Thread.java:619)
+Caused by: org.codehaus.groovy.control.MultipleCompilationErrorsException: startup failed:
+C__Users_rvilensky_Desktop_KobeMail_Security_Grails_Demo_listscrubber_grails_app_views_scrubItem_index_gsp: 60: Expression list of the form (a; b; c) is not supported in this context. at line: 60 column: 16. File: C__Users_rvilensky_Desktop_KobeMail_Security_Grails_Demo_listscrubber_grails_app_views_scrubItem_index_gsp @ line 60, column 16.
+   codecOut.print(new Date(url.timestamp);)
+                  ^
+
+1 error
+
+	at org.codehaus.groovy.control.ErrorCollector.failIfErrors(ErrorCollector.java:296)
+	at org.codehaus.groovy.control.CompilationUnit.applyToSourceUnits(CompilationUnit.java:829)
+	at org.codehaus.groovy.control.CompilationUnit.doPhaseOperation(CompilationUnit.java:511)
+	at org.codehaus.groovy.control.CompilationUnit.processPhaseOperations(CompilationUnit.java:487)
+	at org.codehaus.groovy.control.CompilationUnit.compile(CompilationUnit.java:464)
+	... 1 more
