@@ -1,5 +1,5 @@
 Testsuite: listscrubber.ScrubItemControllerTests
-Tests run: 5, Failures: 0, Errors: 0, Time elapsed: 0.43 sec
+Tests run: 5, Failures: 0, Errors: 0, Time elapsed: 1.516 sec
 ------------- Standard Output ---------------
 --Output from testCSVProcessing--
 --Output from testMD5Processing--
@@ -15,8 +15,8 @@ Tests run: 5, Failures: 0, Errors: 0, Time elapsed: 0.43 sec
 --Output from testScrubbedFileList--
 ------------- ---------------- ---------------
 
-Testcase: testCSVProcessing took 0.16 sec
-Testcase: testMD5Processing took 0.041 sec
-Testcase: testPlainTextProcessing took 0.048 sec
-Testcase: testScrubbedFile took 0.038 sec
-Testcase: testScrubbedFileList took 0.126 sec
+Testcase: testCSVProcessing took 0.942 sec
+Testcase: testMD5Processing took 0.017 sec
+Testcase: testPlainTextProcessing took 0.011 sec
+Testcase: testScrubbedFile took 0.014 sec
+Testcase: testScrubbedFileList took 0.116 sec

@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <testsuites>
-  <testsuite errors="0" failures="0" hostname="Emprivo.local" id="0" name="ScrubItemControllerTests" package="listscrubber" tests="5" time="0.43" timestamp="2010-11-04T22:07:41">
+  <testsuite errors="0" failures="0" hostname="Emprivo.local" id="0" name="ScrubItemControllerTests" package="listscrubber" tests="5" time="1.516" timestamp="2010-11-05T18:44:32">
       <properties />
 
-      <testcase classname="listscrubber.ScrubItemControllerTests" name="testCSVProcessing" time="0.16" />
+      <testcase classname="listscrubber.ScrubItemControllerTests" name="testCSVProcessing" time="0.939" />
 
-      <testcase classname="listscrubber.ScrubItemControllerTests" name="testMD5Processing" time="0.041" />
+      <testcase classname="listscrubber.ScrubItemControllerTests" name="testMD5Processing" time="0.017" />
 
-      <testcase classname="listscrubber.ScrubItemControllerTests" name="testPlainTextProcessing" time="0.046" />
+      <testcase classname="listscrubber.ScrubItemControllerTests" name="testPlainTextProcessing" time="0.011" />
 
-      <testcase classname="listscrubber.ScrubItemControllerTests" name="testScrubbedFile" time="0.038" />
+      <testcase classname="listscrubber.ScrubItemControllerTests" name="testScrubbedFile" time="0.014" />
 
-      <testcase classname="listscrubber.ScrubItemControllerTests" name="testScrubbedFileList" time="0.126" />
+      <testcase classname="listscrubber.ScrubItemControllerTests" name="testScrubbedFileList" time="0.116" />
 
       <system-out><![CDATA[--Output from testCSVProcessing--
 --Output from testMD5Processing--
@@ -28,10 +28,34 @@
 ]]></system-err>
 
   </testsuite>
-  <testsuite errors="0" failures="0" hostname="Emprivo.local" id="1" name="ScrubItemTests" package="listscrubber" tests="1" time="0.0080" timestamp="2010-11-04T22:07:42">
+  <testsuite errors="0" failures="0" hostname="Emprivo.local" id="1" name="ScrubItemTests" package="listscrubber" tests="1" time="0.016" timestamp="2010-11-05T18:44:34">
       <properties />
 
       <testcase classname="listscrubber.ScrubItemTests" name="testSomething" time="0.0070" />
+
+      <system-out><![CDATA[--Output from testSomething--
+]]></system-out>
+
+      <system-err><![CDATA[--Output from testSomething--
+]]></system-err>
+
+  </testsuite>
+  <testsuite errors="0" failures="0" hostname="Emprivo.local" id="2" name="SupressedEmailControllerTests" package="listscrubber" tests="1" time="0.109" timestamp="2010-11-05T18:44:34">
+      <properties />
+
+      <testcase classname="listscrubber.SupressedEmailControllerTests" name="testSomething" time="0.102" />
+
+      <system-out><![CDATA[--Output from testSomething--
+]]></system-out>
+
+      <system-err><![CDATA[--Output from testSomething--
+]]></system-err>
+
+  </testsuite>
+  <testsuite errors="0" failures="0" hostname="Emprivo.local" id="3" name="SupressedEmailTests" package="listscrubber" tests="1" time="0.0050" timestamp="2010-11-05T18:44:34">
+      <properties />
+
+      <testcase classname="listscrubber.SupressedEmailTests" name="testSomething" time="0.0030" />
 
       <system-out><![CDATA[--Output from testSomething--
 ]]></system-out>

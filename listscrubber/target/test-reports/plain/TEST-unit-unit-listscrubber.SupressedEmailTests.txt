@@ -1,5 +1,5 @@
-Testsuite: listscrubber.ScrubItemTests
-Tests run: 1, Failures: 0, Errors: 0, Time elapsed: 0.016 sec
+Testsuite: listscrubber.SupressedEmailTests
+Tests run: 1, Failures: 0, Errors: 0, Time elapsed: 0.005 sec
 ------------- Standard Output ---------------
 --Output from testSomething--
 ------------- ---------------- ---------------
@@ -7,4 +7,4 @@ Tests run: 1, Failures: 0, Errors: 0, Time elapsed: 0.016 sec
 --Output from testSomething--
 ------------- ---------------- ---------------
 
-Testcase: testSomething took 0.007 sec
+Testcase: testSomething took 0.003 sec
