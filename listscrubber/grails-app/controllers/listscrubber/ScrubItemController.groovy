@@ -24,13 +24,16 @@ class ScrubItemController {
 				
 				List<String> scrubbedFile = Scrubber.scrub(processedFile, fileType);
 				
-				def result = scrubbedFile.join("\n")
+				def result = scrubbedFile.join("\n");
                 
                 FileHandler.saveReadyFile(result, fileName);
+
+                successes.add('File upload successful.');              
             }
-            println "File Type: " + fileType
-            println "File Name: " + fileName
-            successes.add('File upload successful.');              
+            else
+            {
+                errors.add('File uploaded was empty.');
+            }
         }
         else if(params.fileType || params.dirtyFile || params.fileName)
         {
@@ -65,6 +68,7 @@ class FileHandler
     static processFile(String contents, String fileType)
     {
         def clean = contents;
+        
         if(fileType == "csv")
         {
             /**

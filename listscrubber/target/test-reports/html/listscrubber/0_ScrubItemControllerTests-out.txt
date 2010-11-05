@@ -1,6 +1,20 @@
+--Output from testUniqueProcessing--
+Testing unique processing.
+INPUT: one
+one
+two
+two
+three
+EXPECTING: [one, two, three]
+GOT: [one, two, three]
 --Output from testCSVProcessing--
+Testing CSV processing
 --Output from testMD5Processing--
+Testing MD5 processing
 --Output from testPlainTextProcessing--
+Testing plain text processing
 --Output from testScrubbedFile--
+Testing scrubbed file object
 --Output from testScrubbedFileList--
+Testing file list timestamps
 
