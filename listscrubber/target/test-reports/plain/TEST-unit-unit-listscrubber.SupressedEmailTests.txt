@@ -1,5 +1,9 @@
 Testsuite: listscrubber.SupressedEmailTests
+<<<<<<< HEAD
 Tests run: 1, Failures: 0, Errors: 0, Time elapsed: 0.008 sec
+=======
+Tests run: 1, Failures: 0, Errors: 0, Time elapsed: 0.005 sec
+>>>>>>> f0505a8017db34c4ea38f261734e9c58b97c6f91
 ------------- Standard Output ---------------
 --Output from testSomething--
 ------------- ---------------- ---------------
@@ -7,4 +11,8 @@ Tests run: 1, Failures: 0, Errors: 0, Time elapsed: 0.008 sec
 --Output from testSomething--
 ------------- ---------------- ---------------
 
+<<<<<<< HEAD
 Testcase: testSomething took 0.004 sec
+=======
+Testcase: testSomething took 0.003 sec
+>>>>>>> f0505a8017db34c4ea38f261734e9c58b97c6f91

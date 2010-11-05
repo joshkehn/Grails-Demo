@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite errors="0" failures="0" hostname="Emprivo.local" name="listscrubber.ScrubItemControllerTests" tests="5" time="0.43" timestamp="2010-11-04T22:07:41">
+<testsuite errors="0" failures="0" hostname="Emprivo.local" name="listscrubber.ScrubItemControllerTests" tests="5" time="1.516" timestamp="2010-11-05T18:44:32">
   <properties />
-  <testcase classname="listscrubber.ScrubItemControllerTests" name="testCSVProcessing" time="0.16" />
-  <testcase classname="listscrubber.ScrubItemControllerTests" name="testMD5Processing" time="0.041" />
-  <testcase classname="listscrubber.ScrubItemControllerTests" name="testPlainTextProcessing" time="0.046" />
-  <testcase classname="listscrubber.ScrubItemControllerTests" name="testScrubbedFile" time="0.038" />
-  <testcase classname="listscrubber.ScrubItemControllerTests" name="testScrubbedFileList" time="0.126" />
+  <testcase classname="listscrubber.ScrubItemControllerTests" name="testCSVProcessing" time="0.939" />
+  <testcase classname="listscrubber.ScrubItemControllerTests" name="testMD5Processing" time="0.017" />
+  <testcase classname="listscrubber.ScrubItemControllerTests" name="testPlainTextProcessing" time="0.011" />
+  <testcase classname="listscrubber.ScrubItemControllerTests" name="testScrubbedFile" time="0.014" />
+  <testcase classname="listscrubber.ScrubItemControllerTests" name="testScrubbedFileList" time="0.116" />
   <system-out><![CDATA[--Output from testCSVProcessing--
 --Output from testMD5Processing--
 --Output from testPlainTextProcessing--
