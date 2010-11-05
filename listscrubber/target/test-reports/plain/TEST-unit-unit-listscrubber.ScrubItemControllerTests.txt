@@ -1,5 +1,5 @@
 Testsuite: listscrubber.ScrubItemControllerTests
-Tests run: 6, Failures: 0, Errors: 0, Time elapsed: 0.348 sec
+Tests run: 6, Failures: 1, Errors: 0, Time elapsed: 1.394 sec
 ------------- Standard Output ---------------
 --Output from testUniqueProcessing--
 Testing unique processing.
@@ -30,9 +30,15 @@ Testing file list timestamps
 --Output from testScrubbedFileList--
 ------------- ---------------- ---------------
 
-Testcase: testUniqueProcessing took 0.081 sec
-Testcase: testCSVProcessing took 0.022 sec
-Testcase: testMD5Processing took 0.117 sec
-Testcase: testPlainTextProcessing took 0.018 sec
-Testcase: testScrubbedFile took 0.03 sec
-Testcase: testScrubbedFileList took 0.076 sec
+Testcase: testUniqueProcessing took 1.13 sec
+Testcase: testCSVProcessing took 0.032 sec
+Testcase: testMD5Processing took 0.007 sec
+Testcase: testPlainTextProcessing took 0.014 sec
+Testcase: testScrubbedFile took 0.016 sec
+Testcase: testScrubbedFileList took 0.152 sec
+	FAILED
+junit.framework.AssertionFailedError: null
+junit.framework.AssertionFailedError: junit.framework.AssertionFailedError: null
+	at listscrubber.ScrubItemControllerTests$_testScrubbedFileList_closure1.doCall(ScrubItemControllerTests.groovy:71)
+	at listscrubber.ScrubItemControllerTests.testScrubbedFileList(ScrubItemControllerTests.groovy:63)
+

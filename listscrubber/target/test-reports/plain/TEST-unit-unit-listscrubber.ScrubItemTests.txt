@@ -1,5 +1,5 @@
 Testsuite: listscrubber.ScrubItemTests
-Tests run: 1, Failures: 0, Errors: 0, Time elapsed: 0.059 sec
+Tests run: 1, Failures: 0, Errors: 0, Time elapsed: 0.017 sec
 ------------- Standard Output ---------------
 --Output from testSomething--
 ------------- ---------------- ---------------
@@ -7,4 +7,4 @@ Tests run: 1, Failures: 0, Errors: 0, Time elapsed: 0.059 sec
 --Output from testSomething--
 ------------- ---------------- ---------------
 
-Testcase: testSomething took 0.054 sec
+Testcase: testSomething took 0.003 sec

@@ -1,19 +1,25 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <testsuites>
-  <testsuite errors="0" failures="0" hostname="Emprivo.local" id="0" name="ScrubItemControllerTests" package="listscrubber" tests="6" time="0.348" timestamp="2010-11-05T20:08:24">
+  <testsuite errors="0" failures="1" hostname="Emprivo.local" id="0" name="ScrubItemControllerTests" package="listscrubber" tests="6" time="1.394" timestamp="2010-11-05T20:47:54">
       <properties />
 
-      <testcase classname="listscrubber.ScrubItemControllerTests" name="testUniqueProcessing" time="0.081" />
+      <testcase classname="listscrubber.ScrubItemControllerTests" name="testUniqueProcessing" time="1.129" />
 
-      <testcase classname="listscrubber.ScrubItemControllerTests" name="testCSVProcessing" time="0.022" />
+      <testcase classname="listscrubber.ScrubItemControllerTests" name="testCSVProcessing" time="0.032" />
 
-      <testcase classname="listscrubber.ScrubItemControllerTests" name="testMD5Processing" time="0.117" />
+      <testcase classname="listscrubber.ScrubItemControllerTests" name="testMD5Processing" time="0.0070" />
 
-      <testcase classname="listscrubber.ScrubItemControllerTests" name="testPlainTextProcessing" time="0.018" />
+      <testcase classname="listscrubber.ScrubItemControllerTests" name="testPlainTextProcessing" time="0.014" />
 
-      <testcase classname="listscrubber.ScrubItemControllerTests" name="testScrubbedFile" time="0.03" />
+      <testcase classname="listscrubber.ScrubItemControllerTests" name="testScrubbedFile" time="0.016" />
 
-      <testcase classname="listscrubber.ScrubItemControllerTests" name="testScrubbedFileList" time="0.076" />
+      <testcase classname="listscrubber.ScrubItemControllerTests" name="testScrubbedFileList" time="0.152">
+          <failure message="junit.framework.AssertionFailedError: null" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: junit.framework.AssertionFailedError: null
+	at listscrubber.ScrubItemControllerTests$_testScrubbedFileList_closure1.doCall(ScrubItemControllerTests.groovy:71)
+	at listscrubber.ScrubItemControllerTests.testScrubbedFileList(ScrubItemControllerTests.groovy:63)
+</failure>
+
+      </testcase>
 
       <system-out><![CDATA[--Output from testUniqueProcessing--
 Testing unique processing.
@@ -45,10 +51,10 @@ Testing file list timestamps
 ]]></system-err>
 
   </testsuite>
-  <testsuite errors="0" failures="0" hostname="Emprivo.local" id="1" name="ScrubItemTests" package="listscrubber" tests="1" time="0.059" timestamp="2010-11-05T20:08:24">
+  <testsuite errors="0" failures="0" hostname="Emprivo.local" id="1" name="ScrubItemTests" package="listscrubber" tests="1" time="0.017" timestamp="2010-11-05T20:47:55">
       <properties />
 
-      <testcase classname="listscrubber.ScrubItemTests" name="testSomething" time="0.054" />
+      <testcase classname="listscrubber.ScrubItemTests" name="testSomething" time="0.0030" />
 
       <system-out><![CDATA[--Output from testSomething--
 ]]></system-out>
@@ -57,10 +63,10 @@ Testing file list timestamps
 ]]></system-err>
 
   </testsuite>
-  <testsuite errors="0" failures="0" hostname="Emprivo.local" id="2" name="SupressedEmailControllerTests" package="listscrubber" tests="1" time="0.064" timestamp="2010-11-05T20:08:24">
+  <testsuite errors="0" failures="0" hostname="Emprivo.local" id="2" name="SupressedEmailControllerTests" package="listscrubber" tests="1" time="0.113" timestamp="2010-11-05T20:47:55">
       <properties />
 
-      <testcase classname="listscrubber.SupressedEmailControllerTests" name="testSomething" time="0.062" />
+      <testcase classname="listscrubber.SupressedEmailControllerTests" name="testSomething" time="0.106" />
 
       <system-out><![CDATA[--Output from testSomething--
 ]]></system-out>
@@ -69,10 +75,10 @@ Testing file list timestamps
 ]]></system-err>
 
   </testsuite>
-  <testsuite errors="0" failures="0" hostname="Emprivo.local" id="3" name="SupressedEmailTests" package="listscrubber" tests="1" time="0.0030" timestamp="2010-11-05T20:08:24">
+  <testsuite errors="0" failures="0" hostname="Emprivo.local" id="3" name="SupressedEmailTests" package="listscrubber" tests="1" time="0.0060" timestamp="2010-11-05T20:47:55">
       <properties />
 
-      <testcase classname="listscrubber.SupressedEmailTests" name="testSomething" time="0.0020" />
+      <testcase classname="listscrubber.SupressedEmailTests" name="testSomething" time="0.0030" />
 
       <system-out><![CDATA[--Output from testSomething--
 ]]></system-out>
