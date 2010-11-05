@@ -170,7 +170,7 @@
         				<g:each in="${urlList}" var="url">
         				    <tr>
         				        <td>${ url.label.decodeURL() }</td>
-        				        <td>${ new Date(url.timestamp); }</td>
+        				        <td>${ new Date(url.timestamp) }</td>
                                 <td><a href="${createLinkTo(dir: 'ready', file: url.label.decodeURL(), absolute: true)}">View</a></td>
         				        <td><g:link action="download" id="${url.label}">Download</g:link></td>
         				    </tr>

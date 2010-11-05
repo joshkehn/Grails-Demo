@@ -72,7 +72,8 @@ class FileHandler
             */
             clean = clean.replace(',', '');
         }
-        clean.split();
+        
+        new ArrayList(Arrays.asList(clean.split())).unique();
     }
 	
     static getReadyFilesUrls()
