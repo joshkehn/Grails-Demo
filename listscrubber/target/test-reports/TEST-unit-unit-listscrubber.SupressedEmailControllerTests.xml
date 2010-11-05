@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite errors="0" failures="0" hostname="KTech002" name="listscrubber.SupressedEmailControllerTests" tests="1" time="0.177" timestamp="2010-11-05T15:17:16">
+  <properties />
+  <testcase classname="listscrubber.SupressedEmailControllerTests" name="testSomething" time="0.173" />
+  <system-out><![CDATA[--Output from testSomething--
+]]></system-out>
+  <system-err><![CDATA[--Output from testSomething--
+]]></system-err>
+</testsuite>
