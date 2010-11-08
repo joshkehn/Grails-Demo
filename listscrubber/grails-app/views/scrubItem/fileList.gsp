@@ -1,4 +1,4 @@
-<g:if test="${urlList.size() > 0}">
+<g:if test="${urlList.size() > 0 && urlList != null}">
 	<div class="box">
 	    <table>
 	        <thead>
@@ -17,6 +17,11 @@
     	                    <td class="progress ${ url.status }">${ url.status }</td>
     	                </tr>
     	            </g:if>
+    	            <g:else>
+    	                <tr>
+    	                    <td>${url}</td>
+    	                </tr>
+    	            </g:else>
 	            </g:each>
 		    </tbody>
 		</table>
