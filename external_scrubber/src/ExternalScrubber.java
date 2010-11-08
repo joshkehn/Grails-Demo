@@ -86,7 +86,7 @@ public class ExternalScrubber {
 		Connection con1 = null;
 		try {
 			Class.forName("com.mysql.jdbc.Driver"); 
-			con1 = DriverManager.getConnection("jdbc:mysql://10.1.1.121:3306/scrubbing","root","root");
+			con1 = DriverManager.getConnection("jdbc:mysql://localhost:3306/scrubbing","root","root");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -95,7 +95,7 @@ public class ExternalScrubber {
 	}
 	
 	private static UploadedFile getUploadedFile() {
-		String sql = "SELECT * FROM files WHERE  timestamp = (SELECT MIN(timestamp) FROM files) AND status = 'new' ";
+		String sql = "SELECT * FROM files WHERE  entry_time = (SELECT MIN(entry_time) FROM files) AND status = 'new' ";
 		UploadedFile uf = null;
 		
 		try {
