@@ -145,6 +145,11 @@
                 color: #157D23;
             }
         </style>
+        <script type="text/javascript">
+            setTimeout(function () {
+                window.location.reload();
+            }, 1200);
+        </script>
     </head>
     <body>
         <div id="wrapper">
@@ -189,6 +194,7 @@
     			                    <td class="progress ${ url.status }">${ url.status }</td>
     			                </tr>
     			            </g:each>
+                            <!-- Commented out for visual testing purposes -->
                             <!-- <tr>
                                 <td>File Test</td>
                                 <td>MD5</td>
