@@ -33,5 +33,6 @@ DB
 CREATE TABLE file_status (
 	file_name varchar(255),
 	new_file_name varchar(255),
-	file_status varchar(255)
+	file_status varchar(255),
+	file_type varchar(10)
 );

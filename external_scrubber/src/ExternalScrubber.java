@@ -25,25 +25,27 @@ package com.kobemail.listscrubber.external;
 
 public class ExternalScrubber {
 	
+	public static Connection conn = getNewConnection();
+	
 	public static void main(String[] args) {	
-		Connection conn = getNewConnection();
+		
 		
 		while(true) {
 			UploadedFile uf = getUploadedFile(conn);
 			if(uf.status.equals("new")) {
 				List<String> dirtyStuff = getDirtyFile(uf.fileName);
 				List<String> cleanStuff = processFile(dirtyStuff,uf.fileType);
-				List<String> suppList = getSuppList(uf.fileType);
+				List<String> suppList = getSuppList(conn,uf.fileType);
 				
 				int onePct = cleanStuff.size()/100;
 				int currPct = 0;
 				
-				setPct(currPct);
+				setStatus(""+currPct);
 				
 				for(int i=0; i<cleanStuff.size(); i++) {
 					if(i>0 && i%onePct == 0) {
 						currPct++;
-						setPct(currPct);
+						setStatus(""+currPct);
 					}
 					
 					for(String semail : suppList) {
@@ -62,6 +64,21 @@ public class ExternalScrubber {
 	private static Connection getNewConnection() {
 	}
 	
-	private static getUploadedFile(Connection conn) {
+	private static UploadedFile getUploadedFile() {
+	}
+	
+	private static List<String> getDirtyFile(String fileName) {
+	}
+	
+	private static List<String> processFile(List<String> dirtyStuff, String fileType) {
+	}
+	
+	private static List<String> getSuppList(String fileType) {
+	}
+	
+	private static void setStatus(String newStatus) {
+	}
+	
+	private static void saveNewFile(List<String> cleanStuff, String newFileName) {
 	}
 }
