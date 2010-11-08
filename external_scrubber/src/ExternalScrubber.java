@@ -101,18 +101,53 @@ public class ExternalScrubber {
 	}
 	
 	private static List<String> getDirtyFile(String fileName) {
+		String fileStr = "C:/Users/rvilensky/Desktop/KobeMail Security/Grails-Demo/listscrubber/web-app/staging/" + fileName;
+		File file = new File(fileStr);
+		BufferedReader reader = new BufferedReader(new FileReader(file));
+		
+		List<String> dirtyList = new ArrayList<String>();
+		
+		try {
+			String line = null;
+			
+			while((line = reader.readLine()) != null) {
+				dirtyList.add(line);
+			}
+			
+		} finally {
+			reader.close();
+		}
+		
+		return dirtyList;
 	}
 	
 	private static List<String> processFile(List<String> dirtyStuff, String fileType) {
+		if("csv".equals(fileType)) {
+			for(String s : dirtyStuff) {
+				s.replaceAll(",","");
+			}
+		}
 	}
 	
 	private static List<String> getSuppList(String fileType) {
+	
+		String sql = "SELECT ";
+		sql += ("md5".equals(fileType))?"md5 ":"email ";
+		sql += " AS emailVal FROM SupressedEmail ";
+		
+		PreparedStatement prepStat = conn.prepareStatement(sql);
+		ResultSet rs = prepStat.executeQuery();
+		
+		List<String> suppList = new ArrayList<String>();
+		
+		while(rs.next()) {
+			suppList.add(rs.getString("emailVal"));
+		}
+		
+		return suppList;	
 	}
 	
 	private static void setStatus(String newStatus) {
-	}
-	
-	private static void setStatus(int status){
 	}
 	
 	private static void saveNewFile(List<String> cleanStuff, String newFileName) {
