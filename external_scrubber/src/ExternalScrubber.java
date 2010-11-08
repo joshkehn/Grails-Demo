@@ -40,7 +40,7 @@ public class ExternalScrubber {
 				int onePct = cleanStuff.size()/100;
 				int currPct = 0;
 				
-				setStatus(""+currPct);
+				setStatus(""+currPct, uf.fileId);
 				
 				/*
 				
@@ -57,7 +57,7 @@ public class ExternalScrubber {
 				for(int i=0; i<cleanStuff.size(); i++) {
 					if(i>0 && i%onePct == 0) {
 						currPct++;
-						setStatus(currPct);
+						setStatus(""+currPct, uf.fileId);
 					}
 					
 					for(String semail : suppList) {
@@ -65,11 +65,15 @@ public class ExternalScrubber {
 							cleanStuff.remove(i);
 						}
 					}
+					
+					Thread.sleep(2000);
 				}
 				
-				saveNewFile(cleanStuff,uf.newFileName);
-				setStatus("done");
+				saveNewFile(cleanStuff,uf.fileName);
+				setStatus("done", uf.fileId);
 			}
+			
+			Thread.sleep(10000);
 		}
 	}
 	
@@ -147,9 +151,34 @@ public class ExternalScrubber {
 		return suppList;	
 	}
 	
-	private static void setStatus(String newStatus) {
+	private static void setStatus(String newStatus, int fileId) {
+		String sql = "UPDATE files SET status = ? WHERE filed_id = ? ";
+		PreparedStatement prepStat = conn.prepareStatement(sql);
+		prepStat.setString(1,newStatus);
+		prepStat.setInt(2, fileId);
+		
+		prepStat.executeUpdate();
+		
+		conn.commit();
 	}
 	
-	private static void saveNewFile(List<String> cleanStuff, String newFileName) {
+	private static void saveNewFile(List<String> cleanStuff, String fileName) {
+		String fileStr = "C:/Users/rvilensky/Desktop/KobeMail Security/Grails-Demo/listscrubber/web-app/ready/" + fileName;
+		
+		File file = new File(fileStr);
+		
+		if(!file.exists()) {
+			file.createNewFile();
+		}
+		
+		BufferedWriter writer = new BufferedWriter(new FileWriter(fileStr));
+		try {
+			for(String s : cleanStuff) {		
+				writer.write(s);
+				writer.newLine();
+			}
+		} finally {
+			writer.close();
+		}
 	}
 }
