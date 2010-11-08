@@ -33,10 +33,14 @@ public class ExternalScrubber {
 	
 	public static void main(String[] args) throws Exception {	
 		
+		System.out.println("started process");
 		
 		while(true) {
 			UploadedFile uf = getUploadedFile();
+			
+			
 			if(uf != null) {
+				System.out.println("picked up file: uf.fileName=" + uf.fileName + " ");
 				List<String> dirtyStuff = getDirtyFile(uf.fileName);
 				List<String> cleanStuff = processFile(dirtyStuff,uf.fileType);
 				List<String> suppList = getSuppList(uf.fileType);

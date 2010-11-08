@@ -13,7 +13,6 @@ class UploadedFile {
 	
 	static mapping = {
 		table 'files'
-		id column: 'filed_id'
 		
 		columns {
 			fileId      column: 'filed_id'
