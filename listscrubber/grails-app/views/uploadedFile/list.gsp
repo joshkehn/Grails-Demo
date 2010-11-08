@@ -26,6 +26,8 @@
                         
                             <g:sortableColumn property="fileName" title="${message(code: 'uploadedFile.fileName.label', default: 'File Name')}" />
                         
+                            <g:sortableColumn property="fileType" title="${message(code: 'uploadedFile.fileType.label', default: 'File Type')}" />
+                        
                             <g:sortableColumn property="newName" title="${message(code: 'uploadedFile.newName.label', default: 'New Name')}" />
                         
                             <g:sortableColumn property="status" title="${message(code: 'uploadedFile.status.label', default: 'Status')}" />
@@ -39,6 +41,8 @@
                             <td><g:link action="show" id="${uploadedFileInstance.id}">${fieldValue(bean: uploadedFileInstance, field: "id")}</g:link></td>
                         
                             <td>${fieldValue(bean: uploadedFileInstance, field: "fileName")}</td>
+                        
+                            <td>${fieldValue(bean: uploadedFileInstance, field: "fileType")}</td>
                         
                             <td>${fieldValue(bean: uploadedFileInstance, field: "newName")}</td>
                         
