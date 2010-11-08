@@ -9,7 +9,7 @@
 	        </thead>
 	        <tbody>
 	            <g:each in = "${urlList}" var="url">
-	                <g:if text="${url != null}">
+	                <g:if test="${url != null}">
     	                <tr>
     	                    <td>${ url.fileName }</td>
     	                    <td>${ url.fileType }</td>
