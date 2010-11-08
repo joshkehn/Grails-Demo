@@ -177,7 +177,6 @@
             </g:form>
             <hr />
 			<h4>Files Ready To Download</h4>
-			<div id="waiting"><img src="${resource(dir: 'images', file: 'loading.gif')}" width="20" /></div>
 			<style type="text/css" media="screen">
 			    #waiting
 			    {
@@ -190,16 +189,15 @@
 			    }
 			</style>
 			<div id="fileready"></div>
+			<div id="waiting"><img src="${resource(dir: 'images', file: 'loading.gif')}" width="20" /></div>
             <script type="text/javascript" charset="utf-8">
                 function reloadFileDiv()
                 {
                     $("#waiting").fadeIn(400, function () {
-                        $("#fileready").fadeOut(200, function () {
-                            $("#fileready").load("${createLink(action:'fileList')}", function () {
-                                $("#waiting").fadeOut(400, function () {
-                                    $("#fileready").fadeIn(200);
-                                });
-                            });                                                    
+                        $("#fileready").load("${createLink(action:'fileList')}", function () {
+                            $("#waiting").fadeOut(400, function () {
+                                $("#fileready").fadeIn(200);
+                            });
                         });
                     });
                 }
