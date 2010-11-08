@@ -8,9 +8,11 @@ class ScrubItemController {
         def errors = [];
         def successes = [];
         
+        println 'Checking for form submission.';
+        
         if(params.fileType && !request.getFile("dirtyFile").empty && params.fileName)
         {   
-            def valid = true;
+            println 'Form submission found.';
             def dirtyFile = request.getFile("dirtyFile");
             def contents;
             def fileType = params.fileType;
@@ -18,23 +20,27 @@ class ScrubItemController {
             
             if(!dirtyFile.empty)
             {
-                contents = dirtyFile.inputStream.text;				                
-                List<String> processedFile = FileHandler.processFile(contents, fileType);				
-				List<String> scrubbedFile = Scrubber.scrub(processedFile, fileType);				
-				def result = scrubbedFile.join("\n")
-                
-                FileHandler.saveReadyFile(result, fileName);
+                def u = new UploadedFile(fileName: fileName, fileType: fileType, timestamp: new Date(), status: 'queued');
+                u.save();
+                FileHandler.saveStagedFile(dirtyFile.inputStream.text, fileName);
+                successes.add('File upload successful');
             }
-            println "File Type: " + fileType
-            println "File Name: " + fileName
-            successes.add('File upload successful.');              
+            else
+            {
+                errors.add('Uploaded file was empty.');
+            }
         }
         else if(params.fileType || params.dirtyFile || params.fileName)
         {
+            println 'Invalid form submission found.';
             errors.add('One or more options were not filled out. Every field is required.');
         }
+        else
+        {
+            println 'No form submission.';
+        }
         
-        [urlList: FileHandler.getReadyFilesUrls(), errors: errors, successes: successes]
+        [urlList: UploadedFile.listOrderByTimestamp(order:"desc"), errors: errors, successes: successes]
     }
     
     def download = {
@@ -105,6 +111,12 @@ class FileHandler
     {
         println "Saving to " + name
         new File('web-app' + fileSeparator + 'ready' + fileSeparator + '' + name).write(contents);
+    }
+
+    static saveStagedFile(String contents, String name)
+    {
+        println "Saving to " + name
+        new File('web-app' + fileSeparator + 'staging' + fileSeparator + '' + name).write(contents);
     }
 }
 

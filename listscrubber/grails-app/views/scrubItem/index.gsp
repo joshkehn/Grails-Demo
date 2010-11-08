@@ -131,6 +131,19 @@
                 width: 800px;
                 margin: 0 auto;
             }
+            .progress
+            {
+                color: #F5D041;
+                font-weight: bold;
+            }
+            .queued
+            {
+                color: #999;
+            }
+            .done
+            {
+                color: #157D23;
+            }
         </style>
     </head>
     <body>
@@ -158,25 +171,51 @@
             </g:form>
             <hr />
 			<h4>Files Ready To Download</h4>
-			<div class="box">
-			    <table>
-			        <thead>
-			            <th>Label</th>
-			            <th>Timestamp</th>
-			            <th>Actions</th>
-			        </thead>
-			        <tbody>
-        				<g:each in="${urlList}" var="url">
-        				    <tr>
-        				        <td>${ url.label.decodeURL() }</td>
-        				        <td>${ new Date(url.timestamp) }</td>
-                                <!-- <td><a href="${createLinkTo(dir: 'ready', file: url.label.decodeURL(), absolute: true)}">View</a></td>-->
-        				        <td><g:link action="download" id="${url.label}">Download</g:link></td>
-        				    </tr>
-        				</g:each>
-    			    </tbody>
-    			</table>
-			</div>
+			<g:if test="${urlList.size() > 0}">
+    			<div class="box">
+    			    <table>
+    			        <thead>
+    			            <th>Label</th>
+    			            <th>Type</th>
+    			            <th>Timestamp</th>
+    			            <th>Progress</th>
+    			        </thead>
+    			        <tbody>
+    			            <g:each in = "${urlList}" var="url">
+    			                <tr>
+    			                    <td>${ url.fileName }</td>
+    			                    <td>${ url.fileType }</td>
+    			                    <td>${ url.timestamp }</td>
+    			                    <td class="progress ${ url.status }">${ url.status }</td>
+    			                </tr>
+    			            </g:each>
+                            <!-- <tr>
+                                <td>File Test</td>
+                                <td>MD5</td>
+                                <td>(none)</td>
+                                <td class="progress">50%</td>
+                            </tr>
+                            <tr>
+                                <td>File Test</td>
+                                <td>MD5</td>
+                                <td>(none)</td>
+                                <td class="progress done">done</td>
+                            </tr>
+                            <tr>
+                                <td>File Test</td>
+                                <td>MD5</td>
+                                <td>(none)</td>
+                                <td class="progress queued">queued</td>
+                            </tr> -->
+        			    </tbody>
+        			</table>
+    			</div>
+            </g:if>
+            <g:else>
+                <div class="notice">
+                    No files found.
+                </div>
+            </g:else>
         </div>
     </body>
 </html>
