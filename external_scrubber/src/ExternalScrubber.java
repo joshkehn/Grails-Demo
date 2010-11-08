@@ -42,10 +42,22 @@ public class ExternalScrubber {
 				
 				setStatus(""+currPct);
 				
+				/*
+				
+				get an iterator for each array
+			    compare values of the iterators
+			    if equal, increment both
+			    if not equal, put lesser value into array of unique values and increment only that iterator
+			    repeat until end of an array is met
+			    if any left in other array, those are unique
+				
+				
+				*/
+				
 				for(int i=0; i<cleanStuff.size(); i++) {
 					if(i>0 && i%onePct == 0) {
 						currPct++;
-						setStatus(""+currPct);
+						setStatus(currPct);
 					}
 					
 					for(String semail : suppList) {
@@ -71,7 +83,21 @@ public class ExternalScrubber {
 	}
 	
 	private static UploadedFile getUploadedFile() {
+		String sql = "SELECT * FROM files WHERE  timestamp = (SELECT MIN(timestamp) FROM files) AND status = 'new' ";
+		PreparedStatement prepStat = conn.prepareStatement(sql);
+		ResultSet rs = prepStat.executeQuery();
+		UploadedFile uf = null;
 		
+		if(rs.next()) {
+			uf = new UploadedFile();
+			uf.fileId =  rs.getInt("filed_id");
+			uf.fileName = rs.getString("file_name");
+			uf.fileType = rs.getString("fileType");
+			uf.timestamp = rs.getDate("entry_time");;
+			uf.status = rs.getString("status"); 
+		}
+		
+		return uf;		
 	}
 	
 	private static List<String> getDirtyFile(String fileName) {
@@ -84,6 +110,9 @@ public class ExternalScrubber {
 	}
 	
 	private static void setStatus(String newStatus) {
+	}
+	
+	private static void setStatus(int status){
 	}
 	
 	private static void saveNewFile(List<String> cleanStuff, String newFileName) {
