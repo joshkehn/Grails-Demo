@@ -1,4 +1,5 @@
 million*
 listscrubber/target/
-listscrubber/web-app/ready/
-listscrubber/web-app/staging/
+listscrubber/web-app/ready/*
+*.class
+listscrubber/web-app/staging/*

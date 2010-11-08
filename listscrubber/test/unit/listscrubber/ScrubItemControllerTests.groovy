@@ -37,22 +37,4 @@ class ScrubItemControllerTests extends ControllerUnitTestCase {
         
         assertEquals "Hello, Kitty!", s.label;
     }
-    
-    void testScrubbedFileList()
-    {
-        def urlList = FileHandler.getReadyFilesUrls();
-        def prev;
-        urlList.each() { url ->
-            assertNotNull url;
-            if(prev == null)
-            {
-                prev = url.timestamp;
-            }
-            else
-            {
-                assertTrue prev > url.timestamp;
-                prev = url.timestamp;
-            }
-        }
-    }
 }

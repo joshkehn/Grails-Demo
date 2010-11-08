@@ -146,9 +146,9 @@
             }
         </style>
         <script type="text/javascript">
-            setTimeout(function () {
-                window.location.reload();
-            }, 1200);
+            // setTimeout(function () {
+            //     window.location.reload();
+            // }, 1200);
         </script>
     </head>
     <body>
@@ -176,7 +176,7 @@
             </g:form>
             <hr />
 			<h4>Files Ready To Download</h4>
-			<g:if test="${urlList.size() > 0}">
+			<g:if test="${urlList.size() >  0}">
     			<div class="box">
     			    <table>
     			        <thead>
@@ -199,7 +199,24 @@
                                 <td>File Test</td>
                                 <td>MD5</td>
                                 <td>(none)</td>
-                                <td class="progress">50%</td>
+                                <td class="progress" id="change"></td>
+                                <script type="text/javascript" charset="utf-8">
+                                    var e = document.getElementById("change");
+                                    var p = 0;
+                                    var intval;
+                                    intval = setInterval(function () {
+                                        p++;
+                                        if(p == 101)
+                                        {
+                                            clearInterval(intval);
+                                            e.innerHTML = "done";
+                                        }
+                                        else
+                                        {
+                                            e.innerHTML = p + "%";
+                                        }
+                                    }, 1000);
+                                </script>
                             </tr>
                             <tr>
                                 <td>File Test</td>
