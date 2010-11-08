@@ -200,7 +200,7 @@
                                     $("#fileready").fadeIn(400);
                                 });
                             });                                                    
-                        })
+                        });
                     });
                 }
                 $(document).ready(function () {
