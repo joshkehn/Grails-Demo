@@ -30,6 +30,13 @@
                         </tr>
                     
                         <tr class="prop">
+                            <td valign="top" class="name"><g:message code="uploadedFile.fileId.label" default="File Id" /></td>
+                            
+                            <td valign="top" class="value">${fieldValue(bean: uploadedFileInstance, field: "fileId")}</td>
+                            
+                        </tr>
+                    
+                        <tr class="prop">
                             <td valign="top" class="name"><g:message code="uploadedFile.fileName.label" default="File Name" /></td>
                             
                             <td valign="top" class="value">${fieldValue(bean: uploadedFileInstance, field: "fileName")}</td>
@@ -37,23 +44,16 @@
                         </tr>
                     
                         <tr class="prop">
-                            <td valign="top" class="name"><g:message code="uploadedFile.fileType.label" default="File Type" /></td>
-                            
-                            <td valign="top" class="value">${fieldValue(bean: uploadedFileInstance, field: "fileType")}</td>
-                            
-                        </tr>
-                    
-                        <tr class="prop">
-                            <td valign="top" class="name"><g:message code="uploadedFile.newName.label" default="New Name" /></td>
-                            
-                            <td valign="top" class="value">${fieldValue(bean: uploadedFileInstance, field: "newName")}</td>
-                            
-                        </tr>
-                    
-                        <tr class="prop">
                             <td valign="top" class="name"><g:message code="uploadedFile.status.label" default="Status" /></td>
                             
                             <td valign="top" class="value">${fieldValue(bean: uploadedFileInstance, field: "status")}</td>
+                            
+                        </tr>
+                    
+                        <tr class="prop">
+                            <td valign="top" class="name"><g:message code="uploadedFile.timestamp.label" default="Timestamp" /></td>
+                            
+                            <td valign="top" class="value"><g:formatDate date="${uploadedFileInstance?.timestamp}" /></td>
                             
                         </tr>
                     

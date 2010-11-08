@@ -2,10 +2,10 @@ package listscrubber
 
 class UploadedFile {
 
+	int fileId
 	String fileName
-	String newName
+	Date timestamp
 	String status
-	String fileType
 
     static constraints = {
     }

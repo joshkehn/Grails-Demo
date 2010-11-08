@@ -30,6 +30,15 @@
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
+                                    <label for="fileId"><g:message code="uploadedFile.fileId.label" default="File Id" /></label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean: uploadedFileInstance, field: 'fileId', 'errors')}">
+                                    <g:textField name="fileId" value="${fieldValue(bean: uploadedFileInstance, field: 'fileId')}" />
+                                </td>
+                            </tr>
+                        
+                            <tr class="prop">
+                                <td valign="top" class="name">
                                     <label for="fileName"><g:message code="uploadedFile.fileName.label" default="File Name" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: uploadedFileInstance, field: 'fileName', 'errors')}">
@@ -39,28 +48,19 @@
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                    <label for="fileType"><g:message code="uploadedFile.fileType.label" default="File Type" /></label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean: uploadedFileInstance, field: 'fileType', 'errors')}">
-                                    <g:textField name="fileType" value="${uploadedFileInstance?.fileType}" />
-                                </td>
-                            </tr>
-                        
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                    <label for="newName"><g:message code="uploadedFile.newName.label" default="New Name" /></label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean: uploadedFileInstance, field: 'newName', 'errors')}">
-                                    <g:textField name="newName" value="${uploadedFileInstance?.newName}" />
-                                </td>
-                            </tr>
-                        
-                            <tr class="prop">
-                                <td valign="top" class="name">
                                     <label for="status"><g:message code="uploadedFile.status.label" default="Status" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: uploadedFileInstance, field: 'status', 'errors')}">
                                     <g:textField name="status" value="${uploadedFileInstance?.status}" />
+                                </td>
+                            </tr>
+                        
+                            <tr class="prop">
+                                <td valign="top" class="name">
+                                    <label for="timestamp"><g:message code="uploadedFile.timestamp.label" default="Timestamp" /></label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean: uploadedFileInstance, field: 'timestamp', 'errors')}">
+                                    <g:datePicker name="timestamp" precision="day" value="${uploadedFileInstance?.timestamp}"  />
                                 </td>
                             </tr>
                         

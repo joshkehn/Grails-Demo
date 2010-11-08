@@ -32,7 +32,7 @@ public class ExternalScrubber {
 		
 		while(true) {
 			UploadedFile uf = getUploadedFile(conn);
-			if(uf.status.equals("new")) {
+			if(uf != null) {
 				List<String> dirtyStuff = getDirtyFile(uf.fileName);
 				List<String> cleanStuff = processFile(dirtyStuff,uf.fileType);
 				List<String> suppList = getSuppList(conn,uf.fileType);
@@ -62,6 +62,12 @@ public class ExternalScrubber {
 	}
 	
 	private static Connection getNewConnection() {
+		try {
+			Class.forName("com.mysql.jdbc.Driver"); 
+			conn = DriverManager.getConnection("jdbc:mysql://10.1.1.121:3306/scrubbing","root","root");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 	private static UploadedFile getUploadedFile() {

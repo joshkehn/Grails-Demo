@@ -24,13 +24,13 @@
                         
                             <g:sortableColumn property="id" title="${message(code: 'uploadedFile.id.label', default: 'Id')}" />
                         
+                            <g:sortableColumn property="fileId" title="${message(code: 'uploadedFile.fileId.label', default: 'File Id')}" />
+                        
                             <g:sortableColumn property="fileName" title="${message(code: 'uploadedFile.fileName.label', default: 'File Name')}" />
                         
-                            <g:sortableColumn property="fileType" title="${message(code: 'uploadedFile.fileType.label', default: 'File Type')}" />
-                        
-                            <g:sortableColumn property="newName" title="${message(code: 'uploadedFile.newName.label', default: 'New Name')}" />
-                        
                             <g:sortableColumn property="status" title="${message(code: 'uploadedFile.status.label', default: 'Status')}" />
+                        
+                            <g:sortableColumn property="timestamp" title="${message(code: 'uploadedFile.timestamp.label', default: 'Timestamp')}" />
                         
                         </tr>
                     </thead>
@@ -40,13 +40,13 @@
                         
                             <td><g:link action="show" id="${uploadedFileInstance.id}">${fieldValue(bean: uploadedFileInstance, field: "id")}</g:link></td>
                         
+                            <td>${fieldValue(bean: uploadedFileInstance, field: "fileId")}</td>
+                        
                             <td>${fieldValue(bean: uploadedFileInstance, field: "fileName")}</td>
                         
-                            <td>${fieldValue(bean: uploadedFileInstance, field: "fileType")}</td>
-                        
-                            <td>${fieldValue(bean: uploadedFileInstance, field: "newName")}</td>
-                        
                             <td>${fieldValue(bean: uploadedFileInstance, field: "status")}</td>
+                        
+                            <td><g:formatDate date="${uploadedFileInstance.timestamp}" /></td>
                         
                         </tr>
                     </g:each>
