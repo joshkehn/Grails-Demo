@@ -65,6 +65,7 @@ public class ExternalScrubber {
 	}
 	
 	private static UploadedFile getUploadedFile() {
+		
 	}
 	
 	private static List<String> getDirtyFile(String fileName) {
