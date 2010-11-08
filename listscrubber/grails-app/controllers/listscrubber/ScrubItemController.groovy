@@ -43,6 +43,10 @@ class ScrubItemController {
         [urlList: UploadedFile.listOrderByTimestamp(order:"desc"), errors: errors, successes: successes]
     }
     
+    def fileList = {
+        [urlList: UploadedFile.listOrderByTimestamp(order:"desc")]
+    }
+    
     def download = {
         def filename = params.id;
         def file = new File("web-app/ready/" + filename);

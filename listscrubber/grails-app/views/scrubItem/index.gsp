@@ -150,6 +150,7 @@
             //     window.location.reload();
             // }, 1200);
         </script>
+        <script type="text/javascript" charset="utf-8" src="http://code.jquery.com/jquery-1.4.3.min.js"></script>
     </head>
     <body>
         <div id="wrapper">
@@ -176,69 +177,39 @@
             </g:form>
             <hr />
 			<h4>Files Ready To Download</h4>
-			<g:if test="${urlList.size() >  0}">
-    			<div class="box">
-    			    <table>
-    			        <thead>
-    			            <th>Label</th>
-    			            <th>Type</th>
-    			            <th>Timestamp</th>
-    			            <th>Progress</th>
-    			        </thead>
-    			        <tbody>
-    			            <g:each in = "${urlList}" var="url">
-    			                <tr>
-    			                    <td>${ url.fileName }</td>
-    			                    <td>${ url.fileType }</td>
-    			                    <td>${ url.timestamp }</td>
-    			                    <td class="progress ${ url.status }">${ url.status }</td>
-    			                </tr>
-    			            </g:each>
-                            <!-- Commented out for visual testing purposes -->
-                            <!-- <tr>
-                                <td>File Test</td>
-                                <td>MD5</td>
-                                <td>(none)</td>
-                                <td class="progress" id="change"></td>
-                                <script type="text/javascript" charset="utf-8">
-                                    var e = document.getElementById("change");
-                                    var p = 0;
-                                    var intval;
-                                    intval = setInterval(function () {
-                                        p++;
-                                        if(p == 101)
-                                        {
-                                            clearInterval(intval);
-                                            e.innerHTML = "done";
-                                        }
-                                        else
-                                        {
-                                            e.innerHTML = p + "%";
-                                        }
-                                    }, 1000);
-                                </script>
-                            </tr>
-                            <tr>
-                                <td>File Test</td>
-                                <td>MD5</td>
-                                <td>(none)</td>
-                                <td class="progress done">done</td>
-                            </tr>
-                            <tr>
-                                <td>File Test</td>
-                                <td>MD5</td>
-                                <td>(none)</td>
-                                <td class="progress queued">queued</td>
-                            </tr> -->
-        			    </tbody>
-        			</table>
-    			</div>
-            </g:if>
-            <g:else>
-                <div class="notice">
-                    No files found.
-                </div>
-            </g:else>
+			<div id="waiting"><img src="${createLinkTo(dir: 'images', file: 'loading.gif')}" width="20" /></div>
+			<style type="text/css" media="screen">
+			    #waiting
+			    {
+			        padding: 10px;
+			        text-align: center;
+			        background: #eee;
+			        border: 4px solid #8B8B8B;
+			        margin-bottom: 1em;
+			        display: none;
+			    }
+			</style>
+			<div id="fileready"></div>
+            <script type="text/javascript" charset="utf-8">
+                function reloadFileDiv()
+                {
+                    $("#waiting").fadeIn(100, function () {
+                        $("#fileready").fadeOut(400, function () {
+                            $("#fileready").load("${createLink(action:'fileList')}", function () {
+                                $("#waiting").fadeOut(100, function () {
+                                    $("#fileready").fadeIn(400);
+                                });
+                            });                                                    
+                        })
+                    });
+                }
+                $(document).ready(function () {
+                    setInterval( function () {
+                        reloadFileDiv();
+                    }, 5000);
+                    reloadFileDiv();
+                });
+            </script>
         </div>
     </body>
 </html>
