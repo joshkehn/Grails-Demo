@@ -51,6 +51,15 @@
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
+                                  <label for="fileType"><g:message code="uploadedFile.fileType.label" default="File Type" /></label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean: uploadedFileInstance, field: 'fileType', 'errors')}">
+                                    <g:textField name="fileType" value="${uploadedFileInstance?.fileType}" />
+                                </td>
+                            </tr>
+                        
+                            <tr class="prop">
+                                <td valign="top" class="name">
                                   <label for="status"><g:message code="uploadedFile.status.label" default="Status" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: uploadedFileInstance, field: 'status', 'errors')}">

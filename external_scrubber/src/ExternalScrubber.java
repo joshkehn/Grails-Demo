@@ -23,19 +23,23 @@
 
 package com.kobemail.listscrubber.external;
 
+import java.sql.*;
+import java.util.*;
+import java.io.*;
+
 public class ExternalScrubber {
 	
 	public static Connection conn = getNewConnection();
 	
-	public static void main(String[] args) {	
+	public static void main(String[] args) throws Exception {	
 		
 		
 		while(true) {
-			UploadedFile uf = getUploadedFile(conn);
+			UploadedFile uf = getUploadedFile();
 			if(uf != null) {
 				List<String> dirtyStuff = getDirtyFile(uf.fileName);
 				List<String> cleanStuff = processFile(dirtyStuff,uf.fileType);
-				List<String> suppList = getSuppList(conn,uf.fileType);
+				List<String> suppList = getSuppList(uf.fileType);
 				
 				int onePct = cleanStuff.size()/100;
 				int currPct = 0;
@@ -61,7 +65,7 @@ public class ExternalScrubber {
 					}
 					
 					for(String semail : suppList) {
-						if(semail.equals(cleanStuff.get(i)) {
+						if(semail.equals(cleanStuff.get(i))) {
 							cleanStuff.remove(i);
 						}
 					}
@@ -78,48 +82,62 @@ public class ExternalScrubber {
 	}
 	
 	private static Connection getNewConnection() {
+	
+		Connection con1 = null;
 		try {
 			Class.forName("com.mysql.jdbc.Driver"); 
-			conn = DriverManager.getConnection("jdbc:mysql://10.1.1.121:3306/scrubbing","root","root");
+			con1 = DriverManager.getConnection("jdbc:mysql://10.1.1.121:3306/scrubbing","root","root");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
+		return con1;
 	}
 	
 	private static UploadedFile getUploadedFile() {
 		String sql = "SELECT * FROM files WHERE  timestamp = (SELECT MIN(timestamp) FROM files) AND status = 'new' ";
-		PreparedStatement prepStat = conn.prepareStatement(sql);
-		ResultSet rs = prepStat.executeQuery();
 		UploadedFile uf = null;
 		
-		if(rs.next()) {
-			uf = new UploadedFile();
-			uf.fileId =  rs.getInt("filed_id");
-			uf.fileName = rs.getString("file_name");
-			uf.fileType = rs.getString("fileType");
-			uf.timestamp = rs.getDate("entry_time");;
-			uf.status = rs.getString("status"); 
+		try {
+			PreparedStatement prepStat = conn.prepareStatement(sql);
+			ResultSet rs = prepStat.executeQuery();
+			
+			
+			if(rs.next()) {
+				uf = new UploadedFile();
+				uf.fileId =  rs.getInt("filed_id");
+				uf.fileName = rs.getString("file_name");
+				uf.fileType = rs.getString("fileType");
+				uf.timestamp = rs.getDate("entry_time");;
+				uf.status = rs.getString("status"); 
+			}
+		} catch(SQLException se) {
+			se.printStackTrace();
 		}
 		
 		return uf;		
 	}
 	
-	private static List<String> getDirtyFile(String fileName) {
+	private static List<String> getDirtyFile(String fileName) throws IOException {
 		String fileStr = "C:/Users/rvilensky/Desktop/KobeMail Security/Grails-Demo/listscrubber/web-app/staging/" + fileName;
 		File file = new File(fileStr);
-		BufferedReader reader = new BufferedReader(new FileReader(file));
-		
 		List<String> dirtyList = new ArrayList<String>();
+		BufferedReader reader = null;
 		
 		try {
+			reader = new BufferedReader(new FileReader(file));
 			String line = null;
 			
 			while((line = reader.readLine()) != null) {
 				dirtyList.add(line);
 			}
 			
+		} catch(Exception e) {
+			e.printStackTrace();		
 		} finally {
-			reader.close();
+			if(reader != null) {
+				reader.close();
+			}
 		}
 		
 		return dirtyList;
@@ -131,6 +149,8 @@ public class ExternalScrubber {
 				s.replaceAll(",","");
 			}
 		}
+		
+		return dirtyStuff;
 	}
 	
 	private static List<String> getSuppList(String fileType) {
@@ -138,14 +158,17 @@ public class ExternalScrubber {
 		String sql = "SELECT ";
 		sql += ("md5".equals(fileType))?"md5 ":"email ";
 		sql += " AS emailVal FROM SupressedEmail ";
-		
-		PreparedStatement prepStat = conn.prepareStatement(sql);
-		ResultSet rs = prepStat.executeQuery();
-		
 		List<String> suppList = new ArrayList<String>();
 		
-		while(rs.next()) {
-			suppList.add(rs.getString("emailVal"));
+		try {
+			PreparedStatement prepStat = conn.prepareStatement(sql);
+			ResultSet rs = prepStat.executeQuery();
+			
+			while(rs.next()) {
+				suppList.add(rs.getString("emailVal"));
+			}
+		} catch(SQLException se) {
+			se.printStackTrace();
 		}
 		
 		return suppList;	
@@ -153,32 +176,41 @@ public class ExternalScrubber {
 	
 	private static void setStatus(String newStatus, int fileId) {
 		String sql = "UPDATE files SET status = ? WHERE filed_id = ? ";
-		PreparedStatement prepStat = conn.prepareStatement(sql);
-		prepStat.setString(1,newStatus);
-		prepStat.setInt(2, fileId);
 		
-		prepStat.executeUpdate();
-		
-		conn.commit();
+		try {
+			PreparedStatement prepStat = conn.prepareStatement(sql);
+			prepStat.setString(1,newStatus);
+			prepStat.setInt(2, fileId);
+			
+			prepStat.executeUpdate();
+			
+			conn.commit();
+		} catch(SQLException se) {
+			se.printStackTrace();
+		}
 	}
 	
-	private static void saveNewFile(List<String> cleanStuff, String fileName) {
+	private static void saveNewFile(List<String> cleanStuff, String fileName) throws IOException {
 		String fileStr = "C:/Users/rvilensky/Desktop/KobeMail Security/Grails-Demo/listscrubber/web-app/ready/" + fileName;
+		BufferedWriter writer = null;
 		
-		File file = new File(fileStr);
-		
-		if(!file.exists()) {
-			file.createNewFile();
-		}
-		
-		BufferedWriter writer = new BufferedWriter(new FileWriter(fileStr));
 		try {
+			File file = new File(fileStr);
+			
+			if(!file.exists()) {
+				file.createNewFile();
+			}
+		
+			writer = new BufferedWriter(new FileWriter(fileStr));
+		
 			for(String s : cleanStuff) {		
 				writer.write(s);
 				writer.newLine();
 			}
 		} finally {
-			writer.close();
+			if(writer != null) {
+				writer.close();
+			}
 		}
 	}
 }

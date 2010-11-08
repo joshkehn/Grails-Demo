@@ -44,6 +44,13 @@
                         </tr>
                     
                         <tr class="prop">
+                            <td valign="top" class="name"><g:message code="uploadedFile.fileType.label" default="File Type" /></td>
+                            
+                            <td valign="top" class="value">${fieldValue(bean: uploadedFileInstance, field: "fileType")}</td>
+                            
+                        </tr>
+                    
+                        <tr class="prop">
                             <td valign="top" class="name"><g:message code="uploadedFile.status.label" default="Status" /></td>
                             
                             <td valign="top" class="value">${fieldValue(bean: uploadedFileInstance, field: "status")}</td>
