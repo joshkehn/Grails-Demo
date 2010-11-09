@@ -204,7 +204,7 @@
                 $(document).ready(function () {
                     setInterval( function () {
                         reloadFileDiv();
-                    }, 5000);
+                    }, 2000);
                     reloadFileDiv();
                 });
             </script>
