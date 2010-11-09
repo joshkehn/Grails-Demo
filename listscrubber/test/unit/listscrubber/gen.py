@@ -25,6 +25,6 @@ for i in range(0,1023040):
     filemd5.write(m.hexdigest() + "\n") 
     
     if(random.randint(1, 10) == 3):
-        filesup.write(email + ", " + m.hexdigest() + "\n")
+        filesup.write(email + "\n")
         
     sys.stdout.write(str(i) + "\r")
