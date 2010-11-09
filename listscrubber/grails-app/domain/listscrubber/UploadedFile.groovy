@@ -15,7 +15,6 @@ class UploadedFile {
         table 'files'
         
         columns {
-            fileId      column: 'filed_id'
             fileName    column: 'file_name'
             fileType    column: 'fileType'
             timestamp   column: 'entry_time'
