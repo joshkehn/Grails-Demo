@@ -212,7 +212,11 @@
 			    }
 			</style>
 			<div id="fileready"></div>
-			<div id="waiting"><strong>Refreshing...</strong><br /><img src="${resource(dir: 'images', file: 'loading.gif')}" width="80" /></div>
+			<div id="waiting">
+			    <strong>Refreshing...</strong>
+			    <br />
+			    <img src="${resource(dir: 'images', file: 'loading.gif')}" width="80" />
+			</div>
             <script type="text/javascript" charset="utf-8">
                 function reloadFileDiv()
                 {
