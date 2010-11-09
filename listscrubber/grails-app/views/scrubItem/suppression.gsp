@@ -168,9 +168,9 @@
     </head>
     <body>
         <div id="wrapper">
-            <h1>List Scrubber</h1>
+            <h1>Suppression Management</h1>
             <div id="nav">
-                <g:link action="suppression">Suppression Management</g:link>&nbsp;|&nbsp;<g:link action="index" class="current">List Scrubbing</g:link>
+                <g:link action="suppression" class="current">Suppression Management</g:link>&nbsp;|&nbsp;<g:link action="index">List Scrubbing</g:link>
             </div>
 		    <g:each in="${errors}" var="m">
 		        <div class="error">${m}</div>
@@ -178,57 +178,22 @@
 			<g:each in="${successes}" var="m">
 				<div class="success">${m}</div>
 			</g:each>
-            <g:form name="scrubform" action="index" method="post" enctype="multipart/form-data">
+            <g:form name="scrubform" action="suppression" method="post" enctype="multipart/form-data">
                 <fieldset>
                     <legend>File Upload</legend>
 					
-					<label>List to Suppress:</label>&nbsp;<input type="file" name="dirtyFile" />
+					<label>Suppression File:</label>&nbsp;<input type="file" name="suppressionFile" />
                     
                     <br />
-                    
-                    <label for="fileName">New File Name:</label> <g:textField name="fileName"/>
-					
-					<br />
-                    
-                    <hr />
-                    
-                    <h6>File Type:</h6>
-                    <label for="csvid">CSV:</label> <g:radio name="fileType" value="csv" id="csvid" />
-                    <label for="md5id">MD5:</label> <g:radio name="fileType" value="md5" id="md5id" />
-                    <label for="ptid">Plain Text:</label> <g:radio name="fileType" value="pt" id="ptid" />
-                    
-                    <br /><br />
                     
                     <g:submitButton name="submit" value="Process" />
                 </fieldset>
             </g:form>
             <hr />
-			<h4>Files Ready To Download</h4>
-			<style type="text/css" media="screen">
-			    #waiting
-			    {
-			        text-align: center;
-			        display: none;
-			    }
-			</style>
-			<div id="fileready"></div>
-			<div id="waiting"><strong>Refreshing...</strong><br /><img src="${resource(dir: 'images', file: 'loading.gif')}" width="80" /></div>
-            <script type="text/javascript" charset="utf-8">
-                function reloadFileDiv()
-                {
-                    $("#waiting").fadeIn(400, function () {
-                        $("#fileready").load("${createLink(action:'fileList')}", function () {
-                            $("#waiting").fadeOut(400);
-                        }); 
-                    });
-                }
-                $(document).ready(function () {
-                    setInterval( function () {
-                        reloadFileDiv();
-                    }, 3000);
-                    reloadFileDiv();
-                });
-            </script>
+            <h4><g:link action="suppressionClear">Clear Suppression List</g:link></h4>
+            <p>
+                Clearing the database will remove <strong>all current suppression users.</strong>
+            </p>
         </div>
     </body>
 </html>
