@@ -57,7 +57,6 @@ class ScrubItemController {
     }
     
     def suppression = {
-        
         if(params.suppressionFile && !request.getFile("suppressionFile").empty)
         {
             /**
@@ -76,8 +75,12 @@ class ScrubItemController {
         {
             println "No form submission found.";
         }
-        
     }
+	
+	def suppressionClear = {
+        SupressedEmail.list()*.delete();
+        redirect(action:suppression);
+	}
 }
 
 class FileHandler

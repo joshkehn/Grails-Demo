@@ -161,6 +161,8 @@ public class ExternalScrubber {
 			}
 		}
 		
+		System.out.println("dirtyList: " + dirtyList.size());
+		
 		return dirtyList;
 	}
 	
@@ -172,7 +174,11 @@ public class ExternalScrubber {
 				//System.out.println("processing: " + s);
 				cleanerStuff.add(s2);
 			}
+		} else {
+			cleanerStuff = dirtyStuff;
 		}
+		
+		System.out.println("cleanerStuff: " + cleanerStuff.size());
 		
 		return cleanerStuff;
 	}
