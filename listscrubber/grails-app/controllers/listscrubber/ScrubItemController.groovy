@@ -58,6 +58,25 @@ class ScrubItemController {
     
     def suppression = {
         
+        if(params.suppressionFile && !request.getFile("suppressionFile").empty)
+        {
+            /**
+            * Form submitted
+            */
+            def contents = new ArrayList(Arrays.asList(request.getFile("suppressionFile").inputStream.text.split())).unique();
+            contents.each {
+                try{
+                    new SupressedEmail(email: it, md5: it.encodeAsMD5()).save();
+                }catch(Exception e){}
+            }
+            
+            [successes: ["File upload complete."]]
+        }
+        else
+        {
+            println "No form submission found.";
+        }
+        
     }
 }
 

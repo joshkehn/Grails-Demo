@@ -6,5 +6,6 @@ class SupressedEmail {
 	String md5
 	
     static constraints = {
+        email(unique:true)
     }
 }
