@@ -57,8 +57,11 @@ class ScrubItemController {
     }
     
     def suppression = {
-        
+        UploadedEmail.executeUpdate("delete Customer c ")
     }
+	
+	def suppressionClear = {
+	}
 }
 
 class FileHandler
