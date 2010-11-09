@@ -1,6 +1,6 @@
 package com.kobemail.listscrubber.external;
 
-import java.util.Date;
+import java.util.*;
 
 public class UploadedFile {
 	public int fileId;

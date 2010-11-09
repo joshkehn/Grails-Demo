@@ -44,11 +44,12 @@ public class ExternalScrubber {
 				List<String> dirtyStuff = getDirtyFile(uf.fileName);
 				List<String> cleanStuff = processFile(dirtyStuff,uf.fileType);
 				List<String> suppList = getSuppList(uf.fileType);
+				List<String> scrubbedStuff = new ArrayList<String>();
 				
 				int onePct = cleanStuff.size()/100;
 				int currPct = 0;
 				
-				setStatus(""+currPct, uf.fileId);
+				setStatus(currPct + "%", uf.fileId);
 				
 				/*
 				
@@ -62,23 +63,37 @@ public class ExternalScrubber {
 				
 				*/
 				
-				for(int i=0; i<cleanStuff.size(); i++) {
+				System.out.println("onePct = " + onePct);
+				int i=0;
+				for(String s : cleanStuff) {
+					boolean dirty = false;
+					//System.out.println("i%onePct = " + (i%onePct));
 					if(i>0 && i%onePct == 0) {
 						currPct++;
-						setStatus(""+currPct, uf.fileId);
+						setStatus(currPct + "%", uf.fileId);
 					}
 					
 					for(String semail : suppList) {
-						if(semail.equals(cleanStuff.get(i))) {
-							cleanStuff.remove(i);
+						if(semail.equals(s)) {
+							dirty = true;
+							break;
 						}
 					}
 					
-					Thread.sleep(2000);
+					if(!dirty) {
+						scrubbedStuff.add(s);
+					}
+					
+					i++;
+					//Thread.sleep(2000);
 				}
 				
-				saveNewFile(cleanStuff,uf.fileName);
+				Collection<String> uniqueScrubbed = new HashSet<String>(scrubbedStuff);
+				
+				saveNewFile(uniqueScrubbed,uf.fileName);
 				setStatus("done", uf.fileId);
+			} else {
+				System.out.println("NO FILE FOUND");
 			}
 			
 			Thread.sleep(10000);
@@ -99,7 +114,8 @@ public class ExternalScrubber {
 	}
 	
 	private static UploadedFile getUploadedFile() {
-		String sql = "SELECT * FROM files WHERE  entry_time = (SELECT MIN(entry_time) FROM files) AND status = 'new' ";
+		System.out.println("getUploadedFile() started");
+		String sql = "select * from files where status = 'queued' order by entry_time desc limit 1 ";
 		UploadedFile uf = null;
 		
 		try {
@@ -109,7 +125,7 @@ public class ExternalScrubber {
 			
 			if(rs.next()) {
 				uf = new UploadedFile();
-				uf.fileId =  rs.getInt("filed_id");
+				uf.fileId =  rs.getInt("id");
 				uf.fileName = rs.getString("file_name");
 				uf.fileType = rs.getString("fileType");
 				uf.timestamp = rs.getDate("entry_time");;
@@ -119,6 +135,7 @@ public class ExternalScrubber {
 			se.printStackTrace();
 		}
 		
+		System.out.println("getUploadedFile(): uf: ");
 		return uf;		
 	}
 	
@@ -148,20 +165,23 @@ public class ExternalScrubber {
 	}
 	
 	private static List<String> processFile(List<String> dirtyStuff, String fileType) {
+		List<String> cleanerStuff = new ArrayList<String>();
 		if("csv".equals(fileType)) {
 			for(String s : dirtyStuff) {
-				s.replaceAll(",","");
+				String s2 = s.substring(0,s.length() - 1);
+				//System.out.println("processing: " + s);
+				cleanerStuff.add(s2);
 			}
 		}
 		
-		return dirtyStuff;
+		return cleanerStuff;
 	}
 	
 	private static List<String> getSuppList(String fileType) {
 	
 		String sql = "SELECT ";
 		sql += ("md5".equals(fileType))?"md5 ":"email ";
-		sql += " AS emailVal FROM SupressedEmail ";
+		sql += " AS emailVal FROM supressed_email ";
 		List<String> suppList = new ArrayList<String>();
 		
 		try {
@@ -179,7 +199,7 @@ public class ExternalScrubber {
 	}
 	
 	private static void setStatus(String newStatus, int fileId) {
-		String sql = "UPDATE files SET status = ? WHERE filed_id = ? ";
+		String sql = "UPDATE files SET status = ? WHERE id = ? ";
 		
 		try {
 			PreparedStatement prepStat = conn.prepareStatement(sql);
@@ -187,14 +207,12 @@ public class ExternalScrubber {
 			prepStat.setInt(2, fileId);
 			
 			prepStat.executeUpdate();
-			
-			conn.commit();
 		} catch(SQLException se) {
 			se.printStackTrace();
 		}
 	}
 	
-	private static void saveNewFile(List<String> cleanStuff, String fileName) throws IOException {
+	private static void saveNewFile(Collection<String> uniqueScrubbed, String fileName) throws IOException {
 		String fileStr = "C:/Users/rvilensky/Desktop/KobeMail Security/Grails-Demo/listscrubber/web-app/ready/" + fileName;
 		BufferedWriter writer = null;
 		
@@ -207,7 +225,7 @@ public class ExternalScrubber {
 		
 			writer = new BufferedWriter(new FileWriter(fileStr));
 		
-			for(String s : cleanStuff) {		
+			for(String s : uniqueScrubbed) {		
 				writer.write(s);
 				writer.newLine();
 			}

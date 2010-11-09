@@ -9,6 +9,8 @@ class ScrubItemController {
         def successes = [];
         
         println 'Checking for form submission.';
+		
+		println 'params: ' + params
         
         if(params.fileType && !request.getFile("dirtyFile").empty && params.fileName)
         {   
@@ -44,6 +46,7 @@ class ScrubItemController {
     }
     
     def fileList = {
+		
         [urlList: UploadedFile.listOrderByTimestamp(order:"desc")]
     }
     
