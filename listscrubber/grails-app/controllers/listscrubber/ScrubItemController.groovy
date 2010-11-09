@@ -12,25 +12,22 @@ class ScrubItemController {
 		
 		println 'params: ' + params
         
-        if(params.fileType && !request.getFile("dirtyFile").empty && params.fileName)
+        if(params.fileType && !request.getFile("dirtyFile").empty && !request.getFile("scrubFile").empty && params.fileName)
         {   
             println 'Form submission found.';
             def dirtyFile = request.getFile("dirtyFile");
-            def contents;
+            def scrubFile = request.getFile("scrubFile");
+            
             def fileType = params.fileType;
             def fileName = params.fileName;
             
-            if(!dirtyFile.empty)
-            {
-                def u = new UploadedFile(fileName: fileName, fileType: fileType, timestamp: new Date(), status: 'queued');
-                u.save();
-                FileHandler.saveStagedFile(dirtyFile.inputStream.text, fileName);
-                successes.add('File upload successful');
-            }
-            else
-            {
-                errors.add('Uploaded file was empty.');
-            }
+            def u = new UploadedFile(fileName: fileName, fileType: fileType, timestamp: new Date(), status: 'queued');
+            u.save();
+            
+            FileHandler.saveStagedFile(dirtyFile.inputStream.text, fileName + ".dirty");
+            FileHandler.saveStagedFile(scrubFile.inputStream.text, fileName + ".scrub");
+            
+            successes.add('File upload successful');
         }
         else if(params.fileType || params.dirtyFile || params.fileName)
         {
@@ -57,6 +54,10 @@ class ScrubItemController {
         response.contentType = "text/plain";
         response.outputStream << file.text;
         response.outputStream.flush();
+    }
+    
+    def suppression = {
+        
     }
 }
 
