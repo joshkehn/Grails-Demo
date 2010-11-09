@@ -133,7 +133,7 @@
             }
             .progress
             {
-                color: #F5D041;
+                color: #262FFF;
                 font-weight: bold;
             }
             .queued
