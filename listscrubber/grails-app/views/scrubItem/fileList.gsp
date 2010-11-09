@@ -1,4 +1,4 @@
-<g:if test="${urlList.size() > 0 && urlList != null}">
+<g:if test="${urlList.size() > 0 && urlList != null }">
 	<div class="box">
 	    <table>
 	        <thead>
@@ -15,6 +15,7 @@
     	                    <td>${ url.fileType }</td>
     	                    <td>${ url.timestamp }</td>
     	                    <td class="progress ${ url.status }">${ url.status }</td>
+    	                    <td><g:if test="${url.status == 'done'}"><g:link action="download" id="${ url.label }">Download</g:link>
     	                </tr>
     	            </g:if>
     	            <g:else>
