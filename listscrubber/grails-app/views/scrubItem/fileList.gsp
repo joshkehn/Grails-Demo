@@ -16,7 +16,7 @@
     	                    <td>${ url.fileType }</td>
     	                    <td>${ url.timestamp }</td>
     	                    <td class="progress ${ url.status }">${ url.status }</td>
-    	                    <td><g:if test="${url.status == 'done'}"><g:link action="download" id="${ url.label }">Download</g:link></g:if></td>
+    	                    <td><g:if test="${url.status == 'done'}"><g:link action="download" id="${ url.fileName }">Download</g:link></g:if></td>
     	                </tr>
     	            </g:if>
     	            <g:else>
