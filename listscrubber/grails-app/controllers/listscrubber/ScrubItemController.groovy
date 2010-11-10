@@ -81,6 +81,10 @@ class ScrubItemController {
         SupressedEmail.list()*.delete();
         redirect(action:suppression);
 	}
+	
+	def suppressionView = {
+	    [suppressionList: SupressedEmail.list()]
+	}
 }
 
 class FileHandler

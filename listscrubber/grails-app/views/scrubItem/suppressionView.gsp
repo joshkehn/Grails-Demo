@@ -178,23 +178,11 @@
 			<g:each in="${successes}" var="m">
 				<div class="success">${m}</div>
 			</g:each>
-            <g:form name="scrubform" action="suppression" method="post" enctype="multipart/form-data">
-                <fieldset>
-                    <legend>File Upload</legend>
-					
-					<label>Suppression File:</label>&nbsp;<input type="file" name="suppressionFile" />
-                    
-                    <br />
-                    
-                    <g:submitButton name="submit" value="Process" />
-                </fieldset>
-            </g:form>
-            <hr />
-            <h4><g:link action="suppressionClear">Clear Suppression List</g:link></h4>
-            <p>
-                Clearing the database will remove <strong>all current suppression users.</strong>
-            </p>
-            <h4><g:link action="suppressionView">View Suppression List</g:link></h4>
+            <h3>Suppression Listing</h3>
+            <h5>Count: ${suppressionList.size()}</h5>
+            <g:each in="${suppressionList}" var="s">
+                ${s.email}:${s.md5}<br />
+            </g:each>
         </div>
     </body>
 </html>
