@@ -180,9 +180,20 @@
 			</g:each>
             <h3>Suppression Listing</h3>
             <h5>Count: ${suppressionList.size()}</h5>
-            <g:each in="${suppressionList}" var="s">
-                ${s.email}:${s.md5}<br />
-            </g:each>
+            <table>
+                <thead>
+                    <th>Email Address</th>
+                    <th>MD5 Hash</th>
+                </thead>
+                <tbody>
+                    <g:each in="${suppressionList}" var="s">
+                        <tr>
+                            <td>${s.email}</td>
+                            <td>${s.md5}</td>
+                        </tr>
+                    </g:each>
+                </tbody>
+            </table>
         </div>
     </body>
 </html>
