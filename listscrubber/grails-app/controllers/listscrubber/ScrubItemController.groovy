@@ -43,7 +43,6 @@ class ScrubItemController {
     }
     
     def fileList = {
-		
         [urlList: UploadedFile.listOrderByTimestamp(order:"desc")]
     }
     

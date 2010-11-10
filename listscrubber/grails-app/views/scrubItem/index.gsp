@@ -227,6 +227,7 @@
                     });
                 }
                 $(document).ready(function () {
+                    $.ajaxSetup({cache: false});
                     setInterval( function () {
                         reloadFileDiv();
                     }, 3000);
